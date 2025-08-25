@@ -1,4 +1,84 @@
 import SwiftUI
+import Foundation
+
+// 格式化文本段落结构
+struct FormattedTextSegment {
+    let text: String
+    let isTitle: Bool
+    let isBullet: Bool
+    let isNormal: Bool
+    
+    init(text: String, isTitle: Bool = false, isBullet: Bool = false, isNormal: Bool = false) {
+        self.text = text
+        self.isTitle = isTitle
+        self.isBullet = isBullet
+        self.isNormal = isNormal
+    }
+}
+
+// 格式化文本视图
+struct FormattedTextView: View {
+    let segments: [FormattedTextSegment]
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            ForEach(Array(segments.enumerated()), id: \.offset) { index, segment in
+                HStack(alignment: .top) {
+                    if segment.isTitle {
+                        Text(segment.text)
+                            .font(.headline)
+                            .fontWeight(.bold)
+                            .foregroundColor(.primary)
+                            .lineLimit(nil)
+                            .fixedSize(horizontal: false, vertical: true)
+                    } else if segment.isBullet {
+                        Text(segment.text)
+                            .font(.body)
+                            .foregroundColor(.secondary)
+                            .lineLimit(nil)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(.leading, 12)
+                    } else {
+                        Text(segment.text)
+                            .font(.body)
+                            .foregroundColor(.primary)
+                            .lineLimit(nil)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    Spacer()
+                }
+                .padding(.vertical, segment.isTitle ? 4 : 2)
+            }
+        }
+    }
+}
+
+// 格式化AI解读文本 - 全局函数
+func formatAIText(_ text: String) -> [FormattedTextSegment] {
+    var segments: [FormattedTextSegment] = []
+    let lines = text.components(separatedBy: "\n")
+    
+    for line in lines {
+        let trimmedLine = line.trimmingCharacters(in: .whitespacesAndNewlines)
+        if trimmedLine.isEmpty { continue }
+        
+        // 检测标题行（包含：的行）
+        if trimmedLine.contains("：") {
+            segments.append(FormattedTextSegment(text: trimmedLine, isTitle: true))
+        }
+        // 检测要点行（以-开头的行）
+        else if trimmedLine.hasPrefix("-") {
+            let bulletText = trimmedLine.replacingOccurrences(of: "-", with: "•")
+            segments.append(FormattedTextSegment(text: bulletText, isBullet: true))
+        }
+        // 普通段落
+        else {
+            segments.append(FormattedTextSegment(text: trimmedLine, isNormal: true))
+        }
+    }
+    
+    return segments
+}
 
 struct ContentView: View {
     @State private var showDivination = false
@@ -393,15 +473,46 @@ struct CoinTossView: View {
                 )
                 .ignoresSafeArea()
                 
-                // 星空效果
-                ForEach(0..<20, id: \.self) { _ in
+                // 修复星空效果 - 确保所有数值都是有效的
+                ForEach(0..<20, id: \.self) { index in
+                    let screenWidth = max(UIScreen.main.bounds.width, 1)
+                    let screenHeight = max(UIScreen.main.bounds.height, 1)
+                    
+                    // 使用固定的相对位置避免随机数导致的NaN
+                    let positions: [(CGFloat, CGFloat)] = [
+                        (screenWidth * 0.1, screenHeight * 0.15),
+                        (screenWidth * 0.3, screenHeight * 0.12),
+                        (screenWidth * 0.7, screenHeight * 0.18),
+                        (screenWidth * 0.9, screenHeight * 0.14),
+                        (screenWidth * 0.2, screenHeight * 0.25),
+                        (screenWidth * 0.8, screenHeight * 0.22),
+                        (screenWidth * 0.15, screenHeight * 0.35),
+                        (screenWidth * 0.5, screenHeight * 0.32),
+                        (screenWidth * 0.85, screenHeight * 0.38),
+                        (screenWidth * 0.25, screenHeight * 0.45),
+                        (screenWidth * 0.75, screenHeight * 0.42),
+                        (screenWidth * 0.1, screenHeight * 0.55),
+                        (screenWidth * 0.4, screenHeight * 0.52),
+                        (screenWidth * 0.9, screenHeight * 0.58),
+                        (screenWidth * 0.3, screenHeight * 0.65),
+                        (screenWidth * 0.6, screenHeight * 0.62),
+                        (screenWidth * 0.2, screenHeight * 0.75),
+                        (screenWidth * 0.7, screenHeight * 0.72),
+                        (screenWidth * 0.45, screenHeight * 0.82),
+                        (screenWidth * 0.8, screenHeight * 0.85)
+                    ]
+                    
+                    let position = positions[index % positions.count]
+                    let sizes: [CGFloat] = [1.0, 1.5, 2.0, 2.5, 3.0]
+                    let opacities: [Double] = [0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
+                    
+                    let starSize = max(sizes[index % sizes.count], 0.5)
+                    let starOpacity = max(opacities[index % opacities.count], 0.1)
+                    
                     Circle()
-                        .fill(Color.white.opacity(Double.random(in: 0.3...0.8)))
-                        .frame(width: CGFloat.random(in: 1...3))
-                        .position(
-                            x: CGFloat.random(in: 0...UIScreen.main.bounds.width),
-                            y: CGFloat.random(in: 0...UIScreen.main.bounds.height)
-                        )
+                        .fill(Color.white.opacity(starOpacity))
+                        .frame(width: starSize, height: starSize)
+                        .position(x: max(position.0, 0), y: max(position.1, 0))
                 }
                 
                 VStack(spacing: 40) {
@@ -674,17 +785,23 @@ struct CoinTossView: View {
     }
 }
 
+
+
+
 // 结果展示界面
 struct ResultView: View {
     let question: String
     let tossResults: [Bool]
     @Environment(\.presentationMode) var presentationMode
+    @State private var divinationResult: DivinationResult?
+    @State private var isLoading = true
+    @State private var errorMessage: String?
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 24) {
-                    // 问题回顾
+                    // 问题显示
                     VStack(spacing: 8) {
                         Text("您的问题")
                             .font(.headline)
@@ -698,18 +815,28 @@ struct ResultView: View {
                     }
                     .padding(.top, 20)
                     
-                    // 卦象展示
+                    // 卦象显示
                     VStack(spacing: 16) {
-                        Text("卦象")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [.purple, .indigo]),
-                                    startPoint: .leading,
-                                    endPoint: .trailing
+                        HStack {
+                            Text("卦象")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .foregroundStyle(
+                                    LinearGradient(
+                                        gradient: Gradient(colors: [.purple, .indigo]),
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
                                 )
-                            )
+                            
+                            if let result = divinationResult {
+                                Spacer()
+                                Text(result.hexagramName)
+                                    .font(.title3)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.purple)
+                            }
+                        }
                         
                         VStack(spacing: 4) {
                             ForEach(0..<6, id: \.self) { index in
@@ -793,41 +920,162 @@ struct ResultView: View {
                                 )
                             )
                         
-                        VStack(alignment: .leading, spacing: 12) {
-                            Text("卦象分析")
-                                .font(.headline)
-                                .foregroundColor(.purple)
-                            
-                            Text("根据您的问题和卦象，此卦显示...")
-                                .font(.body)
-                                .foregroundColor(.primary)
-                            
-                            Text("建议指导")
-                                .font(.headline)
-                                .foregroundColor(.purple)
-                                .padding(.top, 8)
-                            
-                            Text("建议您在此事上保持耐心，时机尚未成熟...")
-                                .font(.body)
-                                .foregroundColor(.primary)
-                        }
-                        .padding(20)
-                        .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(
-                                    LinearGradient(
-                                        gradient: Gradient(colors: [.purple.opacity(0.05), .indigo.opacity(0.03)]),
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
+                        if isLoading {
+                            // 加载状态
+                            VStack(spacing: 16) {
+                                ProgressView()
+                                    .scaleEffect(1.2)
+                                    .tint(.purple)
+                                
+                                Text("AI正在解读卦象...")
+                                    .font(.body)
+                                    .foregroundColor(.secondary)
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 40)
+                            .background(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(
+                                        LinearGradient(
+                                            gradient: Gradient(colors: [.purple.opacity(0.05), .indigo.opacity(0.03)]),
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
                                     )
+                            )
+                        } else if let error = errorMessage {
+                            // 错误状态
+                            VStack(spacing: 12) {
+                                Image(systemName: "exclamationmark.triangle.fill")
+                                    .font(.title2)
+                                    .foregroundColor(.orange)
+                                
+                                Text("解读失败")
+                                    .font(.headline)
+                                    .foregroundColor(.primary)
+                                
+                                Text(error)
+                                    .font(.body)
+                                    .foregroundColor(.secondary)
+                                    .multilineTextAlignment(.center)
+                                
+                                Button("重新解读") {
+                                    Task {
+                                        await loadAIInterpretation()
+                                    }
+                                }
+                                .font(.body)
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 8)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .fill(
+                                            LinearGradient(
+                                                gradient: Gradient(colors: [.purple, .indigo]),
+                                                startPoint: .leading,
+                                                endPoint: .trailing
+                                            )
+                                        )
                                 )
-                        )
+                            }
+                            .padding(20)
+                            .background(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(
+                                        LinearGradient(
+                                            gradient: Gradient(colors: [.orange.opacity(0.05), .red.opacity(0.03)]),
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                            )
+                        } else if let result = divinationResult {
+                            // 成功状态 - 显示AI解读
+                            VStack(alignment: .leading, spacing: 20) {
+                                // 卦象分析
+                                VStack(alignment: .leading, spacing: 12) {
+                                    HStack {
+                                        Image(systemName: "brain.head.profile")
+                                            .foregroundColor(.purple)
+                                            .font(.title3)
+                                        Text("卦象分析")
+                                            .font(.title3)
+                                            .fontWeight(.bold)
+                                            .foregroundColor(.purple)
+                                        Spacer()
+                                    }
+                                    
+                                    FormattedTextView(segments: formatAIText(result.aiInterpretation))
+                                }
+                                .padding(20)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .fill(
+                                            LinearGradient(
+                                                gradient: Gradient(colors: [.purple.opacity(0.08), .indigo.opacity(0.05)]),
+                                                startPoint: .topLeading,
+                                                endPoint: .bottomTrailing
+                                            )
+                                        )
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .stroke(
+                                                    LinearGradient(
+                                                        gradient: Gradient(colors: [.purple.opacity(0.3), .indigo.opacity(0.2)]),
+                                                        startPoint: .topLeading,
+                                                        endPoint: .bottomTrailing
+                                                    ),
+                                                    lineWidth: 1
+                                                )
+                                        )
+                                )
+                                
+                                // 建议指导
+                                VStack(alignment: .leading, spacing: 12) {
+                                    HStack {
+                                        Image(systemName: "lightbulb.fill")
+                                            .foregroundColor(.orange)
+                                            .font(.title3)
+                                        Text("建议指导")
+                                            .font(.title3)
+                                            .fontWeight(.bold)
+                                            .foregroundColor(.orange)
+                                        Spacer()
+                                    }
+                                    
+                                    FormattedTextView(segments: formatAIText(result.advice))
+                                }
+                                .padding(20)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .fill(
+                                            LinearGradient(
+                                                gradient: Gradient(colors: [.orange.opacity(0.08), .yellow.opacity(0.05)]),
+                                                startPoint: .topLeading,
+                                                endPoint: .bottomTrailing
+                                            )
+                                        )
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .stroke(
+                                                    LinearGradient(
+                                                        gradient: Gradient(colors: [.orange.opacity(0.3), .yellow.opacity(0.2)]),
+                                                        startPoint: .topLeading,
+                                                        endPoint: .bottomTrailing
+                                                    ),
+                                                    lineWidth: 1
+                                                )
+                                        )
+                                )
+                            }
+                        }
                     }
                     
                     // 操作按钮
                     HStack(spacing: 16) {
                         Button("保存记录") {
-                            // 保存功能
+                            // TODO: 实现保存功能
                         }
                         .font(.body)
                         .foregroundColor(.purple)
@@ -872,11 +1120,61 @@ struct ResultView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("完成") {
-                        // 关闭所有弹窗，回到主界面
                         presentationMode.wrappedValue.dismiss()
                     }
                     .foregroundColor(.purple)
                 }
+            }
+        }
+        .task {
+            await loadAIInterpretation()
+        }
+    }
+    
+    private func loadAIInterpretation() async {
+        isLoading = true
+        errorMessage = nil
+        
+        do {
+            print("开始AI解读请求...")
+            print("问题: \(question)")
+            print("抛掷结果: \(tossResults)")
+            
+            let result = try await AIService.shared.interpretDivination(
+                question: question,
+                tossResults: tossResults
+            )
+            print("AI解读成功: \(result)")
+            
+            await MainActor.run {
+                self.divinationResult = result
+                self.isLoading = false
+            }
+        } catch {
+            print("AI解读失败: \(error)")
+            
+            // 更详细的错误信息
+            let detailedError: String
+            if let networkError = error as? NetworkError {
+                switch networkError {
+                case .networkError(let underlyingError):
+                    if (underlyingError as NSError).code == -1001 {
+                        detailedError = "网络请求超时，请检查网络连接后重试"
+                    } else {
+                        detailedError = "网络连接失败: \(underlyingError.localizedDescription)"
+                    }
+                case .serverError(let code):
+                    detailedError = "服务器错误 (\(code))，请稍后重试"
+                default:
+                    detailedError = networkError.localizedDescription
+                }
+            } else {
+                detailedError = error.localizedDescription
+            }
+            
+            await MainActor.run {
+                self.errorMessage = detailedError
+                self.isLoading = false
             }
         }
     }
