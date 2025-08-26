@@ -447,16 +447,40 @@ struct DivinationView: View {
     }
 }
 
+// 摇动检测的UIViewControllerRepresentable
+struct ShakeDetector: UIViewControllerRepresentable {
+    let onShake: () -> Void
+    
+    func makeUIViewController(context: Context) -> ShakeDetectorViewController {
+        let controller = ShakeDetectorViewController()
+        controller.onShake = onShake
+        return controller
+    }
+    
+    func updateUIViewController(_ uiViewController: ShakeDetectorViewController, context: Context) {}
+}
+
+class ShakeDetectorViewController: UIViewController {
+    var onShake: (() -> Void)?
+    
+    override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            onShake?()
+        }
+    }
+}
+
 // 抛硬币界面
 struct CoinTossView: View {
     let question: String
     @Environment(\.presentationMode) var presentationMode
-    @State private var currentToss = 0
     @State private var tossResults: [Bool] = []
     @State private var isAnimating = false
     @State private var showResult = false
     @State private var rotationAngle: Double = 0
     @State private var coinScale: CGFloat = 1.0
+    @State private var currentAnimationIndex = 0
+    @State private var hasStarted = false
     
     var body: some View {
         NavigationView {
@@ -472,6 +496,13 @@ struct CoinTossView: View {
                     endPoint: .bottom
                 )
                 .ignoresSafeArea()
+                
+                // 摇动检测
+                ShakeDetector {
+                    if !hasStarted && !isAnimating {
+                        startDivination()
+                    }
+                }
                 
                 // 修复星空效果 - 确保所有数值都是有效的
                 ForEach(0..<20, id: \.self) { index in
@@ -518,7 +549,7 @@ struct CoinTossView: View {
                 VStack(spacing: 40) {
                     // 问题显示
                     VStack(spacing: 8) {
-                        Text("正在为您解答")
+                        Text(hasStarted ? "正在为您解答" : "准备开始占卜")
                             .font(.title2)
                             .foregroundColor(.white)
                         
@@ -531,28 +562,32 @@ struct CoinTossView: View {
                     .padding(.top, 20)
                     
                     // 抛硬币进度
-                    VStack(spacing: 16) {
-                        Text("第 \(currentToss + 1) 次抛掷")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                        
-                        // 进度条
-                        HStack(spacing: 8) {
-                            ForEach(0..<6, id: \.self) { index in
-                                Circle()
-                                    .fill(index <= currentToss ? 
-                                          LinearGradient(
-                                            gradient: Gradient(colors: [.yellow, .orange]),
-                                            startPoint: .top,
-                                            endPoint: .bottom
-                                          ) : 
-                                          LinearGradient(
-                                            gradient: Gradient(colors: [.white.opacity(0.3), .white.opacity(0.1)]),
-                                            startPoint: .top,
-                                            endPoint: .bottom
-                                          )
-                                    )
-                                    .frame(width: 12, height: 12)
+                    if hasStarted {
+                        VStack(spacing: 16) {
+                            Text(isAnimating ? "第 \(currentAnimationIndex + 1) 次抛掷" : "抛掷完成")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                            
+                            // 进度条
+                            HStack(spacing: 8) {
+                                ForEach(0..<6, id: \.self) { index in
+                                    Circle()
+                                        .fill(index < tossResults.count ? 
+                                              LinearGradient(
+                                                gradient: Gradient(colors: [.yellow, .orange]),
+                                                startPoint: .top,
+                                                endPoint: .bottom
+                                              ) : 
+                                              LinearGradient(
+                                                gradient: Gradient(colors: [.white.opacity(0.3), .white.opacity(0.1)]),
+                                                startPoint: .top,
+                                                endPoint: .bottom
+                                              )
+                                        )
+                                        .frame(width: 12, height: 12)
+                                        .scaleEffect(index == currentAnimationIndex && isAnimating ? 1.5 : 1.0)
+                                        .animation(.easeInOut(duration: 0.3), value: currentAnimationIndex)
+                                }
                             }
                         }
                     }
@@ -659,28 +694,46 @@ struct CoinTossView: View {
                         )
                     }
                     
-                    // 抛掷按钮
-                    if currentToss < 6 && !isAnimating {
-                        Button(action: tossCoin) {
-                            HStack {
-                                Image(systemName: "hand.raised.fill")
-                                Text("抛掷铜钱")
-                                Image(systemName: "sparkles")
-                            }
-                            .font(.title3)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.black)
-                            .padding(.vertical, 16)
-                            .padding(.horizontal, 40)
-                            .background(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [.yellow, .orange]),
-                                    startPoint: .leading,
-                                    endPoint: .trailing
+                    // 开始按钮或提示
+                    if !hasStarted && !isAnimating {
+                        VStack(spacing: 20) {
+                            Button(action: {
+                                startDivination()
+                            }) {
+                                HStack {
+                                    Image(systemName: "sparkles")
+                                    Text("开始占卜")
+                                    Image(systemName: "sparkles")
+                                }
+                                .font(.title3)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.black)
+                                .padding(.vertical, 16)
+                                .padding(.horizontal, 40)
+                                .background(
+                                    LinearGradient(
+                                        gradient: Gradient(colors: [.yellow, .orange]),
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
                                 )
-                            )
-                            .cornerRadius(25)
-                            .shadow(color: .yellow.opacity(0.4), radius: 8, x: 0, y: 4)
+                                .cornerRadius(25)
+                                .shadow(color: .yellow.opacity(0.4), radius: 8, x: 0, y: 4)
+                            }
+                            
+                            VStack(spacing: 8) {
+                                HStack {
+                                    Image(systemName: "iphone.shake")
+                                        .foregroundColor(.white.opacity(0.7))
+                                    Text("或摇动手机开始")
+                                        .foregroundColor(.white.opacity(0.7))
+                                }
+                                .font(.caption)
+                                
+                                Text("将自动生成6次抛掷结果")
+                                    .font(.caption2)
+                                    .foregroundColor(.white.opacity(0.5))
+                            }
                         }
                     }
                     
@@ -709,6 +762,8 @@ struct CoinTossView: View {
                                             )
                                         )
                                         .cornerRadius(8)
+                                        .scaleEffect(index == tossResults.count - 1 && isAnimating ? 1.2 : 1.0)
+                                        .animation(.bouncy(duration: 0.5), value: tossResults.count)
                                 }
                             }
                         }
@@ -717,7 +772,7 @@ struct CoinTossView: View {
                     Spacer()
                     
                     // 完成按钮
-                    if currentToss >= 6 {
+                    if tossResults.count >= 6 && !isAnimating {
                         Button(action: {
                             showResult = true
                         }) {
@@ -741,6 +796,7 @@ struct CoinTossView: View {
                             .cornerRadius(25)
                             .shadow(color: .yellow.opacity(0.4), radius: 8, x: 0, y: 4)
                         }
+                        .transition(.scale.combined(with: .opacity))
                     }
                 }
                 .padding(.horizontal, 20)
@@ -752,35 +808,55 @@ struct CoinTossView: View {
         }
     }
     
-    private func tossCoin() {
-        isAnimating = true
+    // 开始占卜函数
+    private func startDivination() {
+        guard !hasStarted && !isAnimating else { return }
         
-        // 复杂的动画效果
+        hasStarted = true
+        isAnimating = true
+        currentAnimationIndex = 0
+        tossResults = []
+        
+        // 连续执行6次抛掷动画
+        performNextToss()
+    }
+    
+    // 执行下一次抛掷
+    private func performNextToss() {
+        guard currentAnimationIndex < 6 else {
+            isAnimating = false
+            return
+        }
+        
+        // 铜钱动画效果
         withAnimation(.easeInOut(duration: 0.3)) {
             coinScale = 1.3
         }
         
-        withAnimation(.easeInOut(duration: 2.0)) {
-            rotationAngle += 720 // 旋转两圈
+        withAnimation(.easeInOut(duration: 1.5)) {
+            rotationAngle += 360
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            withAnimation(.easeOut(duration: 1.5)) {
-                coinScale = 0.8
+            withAnimation(.easeOut(duration: 1.0)) {
+                coinScale = 0.9
             }
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             withAnimation(.bouncy(duration: 0.4)) {
                 coinScale = 1.0
             }
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.4) {
+            
+            // 生成结果
             let result = Bool.random()
             tossResults.append(result)
-            currentToss += 1
-            isAnimating = false
+            currentAnimationIndex += 1
+            
+            // 继续下一次抛掷
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                performNextToss()
+            }
         }
     }
 }
