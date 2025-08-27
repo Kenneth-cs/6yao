@@ -82,6 +82,8 @@ func formatAIText(_ text: String) -> [FormattedTextSegment] {
 
 struct ContentView: View {
     @State private var showDivination = false
+    @State private var showHistory = false
+    @State private var showLearning = false
     
     var body: some View {
         NavigationView {
@@ -258,6 +260,8 @@ struct ContentView: View {
                         }
                         .buttonStyle(PlainButtonStyle())
                         
+
+                        
                         // 示例问题
                         VStack(spacing: 8) {
                             Text("或者问问其他的...")
@@ -292,8 +296,12 @@ struct ContentView: View {
                     
                     // 底部导航
                     HStack(spacing: 40) {
-                        NavigationButton(icon: "book.fill", title: "学习", action: {})
-                        NavigationButton(icon: "clock.fill", title: "历史", action: {})
+                        NavigationButton(icon: "book.fill", title: "学习", action: {
+                            showLearning = true
+                        })
+                        NavigationButton(icon: "clock.fill", title: "历史", action: {
+                            showHistory = true
+                        })
                         NavigationButton(icon: "person.fill", title: "我的", action: {})
                     }
                     .padding(.bottom, 30)
@@ -304,6 +312,12 @@ struct ContentView: View {
         }
         .sheet(isPresented: $showDivination) {
             DivinationView()
+        }
+        .sheet(isPresented: $showHistory) {
+            HistoryView()
+        }
+        .sheet(isPresented: $showLearning) {
+            LearningView()
         }
     }
 }
@@ -872,6 +886,8 @@ struct ResultView: View {
     @State private var divinationResult: DivinationResult?
     @State private var isLoading = true
     @State private var errorMessage: String?
+    @StateObject private var dataService = DataService()
+    @State private var isSaved = false
     
     var body: some View {
         NavigationView {
@@ -1150,24 +1166,27 @@ struct ResultView: View {
                     
                     // 操作按钮
                     HStack(spacing: 16) {
-                        Button("保存记录") {
-                            // TODO: 实现保存功能
+                        Button(isSaved ? "已保存" : "保存记录") {
+                            if !isSaved {
+                                saveRecord()
+                            }
                         }
                         .font(.body)
-                        .foregroundColor(.purple)
+                        .foregroundColor(isSaved ? .secondary : .purple)
                         .padding(.vertical, 12)
                         .padding(.horizontal, 24)
                         .background(
                             RoundedRectangle(cornerRadius: 20)
                                 .stroke(
                                     LinearGradient(
-                                        gradient: Gradient(colors: [.purple, .indigo]),
+                                        gradient: Gradient(colors: isSaved ? [.gray, .gray] : [.purple, .indigo]),
                                         startPoint: .leading,
                                         endPoint: .trailing
                                     ),
                                     lineWidth: 1
                                 )
                         )
+                        .disabled(isSaved)
                         
                         Button("重新问卦") {
                             presentationMode.wrappedValue.dismiss()
@@ -1204,6 +1223,21 @@ struct ResultView: View {
         }
         .task {
             await loadAIInterpretation()
+        }
+    }
+    
+    private func saveRecord() {
+        guard let result = divinationResult else { return }
+        
+        dataService.saveDivinationRecord(
+            question: question,
+            tossResults: tossResults,
+            aiInterpretation: result.aiInterpretation,
+            advice: result.advice
+        )
+        
+        withAnimation {
+            isSaved = true
         }
     }
     
