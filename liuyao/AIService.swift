@@ -6,7 +6,9 @@ class AIService {
     
     func interpretDivination(
         question: String,
-        tossResults: [Bool]
+        tossResults: [Bool],
+        divinationTime: Date,
+        divinationLocation: String
     ) async throws -> DivinationResult {
         
         // 获取卦象信息
@@ -20,7 +22,9 @@ class AIService {
             hexagramName: hexagramInfo.name,
             hexagramDescription: hexagramInfo.description,
             hexagramYinYang: hexagramYinYang,
-            tossResults: tossResults
+            tossResults: tossResults,
+            divinationTime: divinationTime,
+            divinationLocation: divinationLocation
         )
         
         // 修正API请求体格式
@@ -29,10 +33,10 @@ class AIService {
             "messages": [
                 [
                     "role": "user",
-                    "content": prompt  // 直接使用字符串，不需要数组格式
+                    "content": prompt
                 ]
             ],
-            "max_tokens": 1000,
+            "max_tokens": 2000,  // 从1000增加到2000
             "temperature": 0.7
         ]
         
@@ -44,8 +48,16 @@ class AIService {
             )
             
             // 解析AI响应
-            guard let aiContent = response.choices.first?.message.content else {
+            guard let choice = response.choices.first else {
                 throw AIServiceError.noResponse
+            }
+            
+            let aiContent = choice.message.content
+            
+            // 检查是否被截断
+            if choice.finishReason == "length" {
+                print("警告：AI回答因长度限制被截断")
+                // 可以在这里添加重试逻辑或提示用户
             }
             
             // 解析AI回复内容
@@ -58,7 +70,9 @@ class AIService {
                 hexagramDescription: hexagramInfo.description,
                 aiInterpretation: parsedResult.interpretation,
                 advice: parsedResult.advice,
-                timestamp: Date()
+                timestamp: Date(),
+                divinationTime: divinationTime,
+                divinationLocation: divinationLocation
             )
             
         } catch {
@@ -71,16 +85,28 @@ class AIService {
         hexagramName: String,
         hexagramDescription: String,
         hexagramYinYang: String,
-        tossResults: [Bool]
+        tossResults: [Bool],
+        divinationTime: Date,
+        divinationLocation: String
     ) -> String {
         let yaoDetails = tossResults.enumerated().map { index, isYang in
             "第\(index + 1)爻：\(isYang ? "阳爻" : "阴爻")"
         }.joined(separator: "，")
         
+        // 格式化起卦时间
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy年MM月dd日 HH:mm"
+        formatter.locale = Locale(identifier: "zh_CN")
+        let timeString = formatter.string(from: divinationTime)
+        
         return """
         你是一位精通六爻占卜的大师，请根据以下信息为用户提供专业的卦象解读：
         
         【用户问题】：\(question)
+        
+        【起卦信息】：
+        - 起卦时间：\(timeString)
+        - 起卦地点：\(divinationLocation)
         
         【卦象信息】：
         - 卦名：\(hexagramName)
@@ -91,7 +117,7 @@ class AIService {
         请按照以下格式提供解读，注意使用清晰的分段和要点：
         
         【卦象分析】：
-        整体运势：（简要概述当前情况）
+        整体运势：（简要概述当前情况+起卦时间、地点因素的解读）
         
         核心含义：（解释卦象的主要寓意）
         
@@ -109,7 +135,7 @@ class AIService {
         
         时机把握：（关于时机的建议）
         
-        请用温和、智慧的语调回答，内容要有深度但易于理解，多使用分段和要点来提高可读性。
+        请结合起卦的具体时间和地点，考虑时空因素对卦象的影响。用温和、智慧的语调回答，内容要有深度但易于理解，多使用分段和要点来提高可读性。
         """
     }
     
@@ -173,4 +199,13 @@ enum AIServiceError: Error, LocalizedError {
             return "请求失败: \(error.localizedDescription)"
         }
     }
+}
+
+// 添加辅助函数：获取中文时辰
+private func getChineseHour(from hour: Int) -> String {
+    let chineseHours = [
+        "子", "丑", "丑", "寅", "寅", "卯", "卯", "辰", "辰", "巳", "巳", "午",
+        "午", "未", "未", "申", "申", "酉", "酉", "戌", "戌", "亥", "亥", "子"
+    ]
+    return chineseHours[min(hour, 23)]
 }

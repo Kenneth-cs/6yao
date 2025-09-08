@@ -1,11 +1,13 @@
 import SwiftUI
 import Foundation
+import CoreLocation
 
 struct ContentView: View {
     @State private var showDivination = false
     @State private var showHistory = false
     @State private var showLearning = false
     @State private var currentTime = Date()
+    @StateObject private var locationManager = LocationManager()
     
     // 时间格式化器
     private let timeFormatter: DateFormatter = {
@@ -34,7 +36,32 @@ struct ContentView: View {
                 // 星空装饰
                 VStack {
                     HStack {
+                        // 左上角地区显示
+                        HStack(spacing: 4) {
+                            Image(systemName: "location.fill")
+                                .foregroundColor(.purple.opacity(0.6))
+                                .font(.caption)
+                            Text(locationManager.currentCity)
+                                .font(.caption)
+                                .foregroundColor(.purple.opacity(0.8))
+                                .fontWeight(.medium)
+                        }
+                        .padding(.horizontal, 12)
+                        .padding(.vertical, 6)
+                        .background(
+                            Capsule()
+                                .fill(Color.white.opacity(0.8))
+                                .overlay(
+                                    Capsule()
+                                        .stroke(Color.purple.opacity(0.2), lineWidth: 1)
+                                )
+                        )
+                        .onTapGesture {
+                            locationManager.requestLocation()
+                        }
+                        
                         Spacer()
+                        
                         Image(systemName: "sparkles")
                             .foregroundColor(.purple.opacity(0.6))
                             .font(.title2)
@@ -276,10 +303,17 @@ struct ContentView: View {
             }
             .navigationBarHidden(true)
         }
+        .onAppear {
+            locationManager.requestLocation()
+        }
         .sheet(isPresented: $showDivination) {
-            DivinationView(onDismissToHome: {
-                showDivination = false
-            })
+            DivinationView(
+                onDismissToHome: {
+                    showDivination = false
+                },
+                currentTime: currentTime,
+                locationManager: locationManager
+            )
         }
         .sheet(isPresented: $showHistory) {
             HistoryView()
@@ -317,6 +351,8 @@ struct DivinationView: View {
     @State private var question = ""
     @State private var showCoinToss = false
     let onDismissToHome: () -> Void
+    let currentTime: Date  // 添加起卦时间参数
+    let locationManager: LocationManager  // 添加位置管理器参数
     
     var body: some View {
         NavigationView {
@@ -425,7 +461,7 @@ struct DivinationView: View {
             }
         }
         .sheet(isPresented: $showCoinToss) {
-            CoinTossView(question: question, onDismissToHome: onDismissToHome)
+            CoinTossView(question: question, currentTime: currentTime, locationManager: locationManager, onDismissToHome: onDismissToHome)
         }
     }
 }
@@ -456,6 +492,8 @@ class ShakeDetectorViewController: UIViewController {
 // 抛硬币界面
 struct CoinTossView: View {
     let question: String
+    let currentTime: Date
+    let locationManager: LocationManager
     @Environment(\.presentationMode) var presentationMode
     @State private var tossResults: [Bool] = []
     @State private var isAnimating = false
@@ -791,6 +829,8 @@ struct CoinTossView: View {
             ResultView(
                 question: question, 
                 tossResults: tossResults,
+                currentTime: currentTime,
+                locationManager: locationManager,
                 onDismissToHome: onDismissToHome
             )
         }
@@ -856,6 +896,8 @@ struct CoinTossView: View {
 struct ResultView: View {
     let question: String
     let tossResults: [Bool]
+    let currentTime: Date
+    let locationManager: LocationManager
     @Environment(\.presentationMode) var presentationMode
     @State private var divinationResult: DivinationResult?
     @State private var isLoading = true
@@ -863,6 +905,12 @@ struct ResultView: View {
     @StateObject private var dataService = DataService()
     @State private var isSaved = false
     let onDismissToHome: () -> Void
+    
+    // 添加计算属性来获取卦名和卦象描述
+    private var hexagramInfo: (name: String, description: String) {
+        let binary = tossResults.map { $0 ? "1" : "0" }.joined()
+        return HexagramData.getHexagram(for: binary)
+    }
     
     var body: some View {
         NavigationView {
@@ -881,6 +929,84 @@ struct ResultView: View {
                             .padding(.horizontal, 20)
                     }
                     .padding(.top, 20)
+                    
+                    // 起卦信息部分 - 移到卦象显示后面，不依赖AI解读结果
+                    VStack(alignment: .leading, spacing: 16) {
+                        HStack {
+                            Image(systemName: "info.circle.fill")
+                                .foregroundColor(.blue)
+                                .font(.title3)
+                            Text("起卦信息")
+                                .font(.title3)
+                                .fontWeight(.bold)
+                                .foregroundColor(.blue)
+                            Spacer()
+                        }
+                        
+                        VStack(alignment: .leading, spacing: 12) {
+                            // 卦名和卦象描述
+                            VStack(alignment: .leading, spacing: 8) {
+                                HStack {
+                                    Text("卦名：")
+                                        .font(.body)
+                                        .fontWeight(.medium)
+                                        .foregroundColor(.secondary)
+                                    Text(hexagramInfo.name)
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.primary)
+                                }
+                                
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text("卦象描述：")
+                                        .font(.body)
+                                        .fontWeight(.medium)
+                                        .foregroundColor(.secondary)
+                                    Text(hexagramInfo.description)
+                                        .font(.body)
+                                        .foregroundColor(.primary)
+                                        .multilineTextAlignment(.leading)
+                                }
+                            }
+                            
+                            Divider()
+                                .background(Color.gray.opacity(0.3))
+                            
+                            // 起卦时间（公历）
+                            HStack {
+                                Image(systemName: "clock.fill")
+                                    .foregroundColor(.purple.opacity(0.7))
+                                    .font(.caption)
+                                Text("起卦时间：")
+                                    .font(.body)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.secondary)
+                                Text(DateFormatter.divinationTime.string(from: currentTime))
+                                    .font(.body)
+                                    .foregroundColor(.primary)
+                            }
+                            
+                            // 起卦地点
+                            HStack {
+                                Image(systemName: "location.fill")
+                                    .foregroundColor(.purple.opacity(0.7))
+                                    .font(.caption)
+                                Text("起卦地点：")
+                                    .font(.body)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.secondary)
+                                Text(locationManager.currentCity)
+                                    .font(.body)
+                                    .foregroundColor(.primary)
+                            }
+                        }
+                    }
+                    .padding(20)
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color(.systemBackground))
+                            .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
+                    )
                     
                     // 卦象显示
                     VStack(spacing: 16) {
@@ -974,22 +1100,11 @@ struct ResultView: View {
                         )
                     }
                     
-                    // AI解读区域
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("AI解读")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .foregroundStyle(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [.purple, .indigo]),
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                            )
-                        
+                    // AI解读部分
+                    VStack(alignment: .leading, spacing: 20) {
                         if isLoading {
                             // 加载状态
-                            VStack(spacing: 16) {
+                            VStack(spacing: 12) {
                                 ProgressView()
                                     .scaleEffect(1.2)
                                     .tint(.purple)
@@ -999,7 +1114,7 @@ struct ResultView: View {
                                     .foregroundColor(.secondary)
                             }
                             .frame(maxWidth: .infinity)
-                            .padding(.vertical, 40)
+                            .padding(40)
                             .background(
                                 RoundedRectangle(cornerRadius: 16)
                                     .fill(
@@ -1063,39 +1178,24 @@ struct ResultView: View {
                                 // 卦象分析
                                 VStack(alignment: .leading, spacing: 12) {
                                     HStack {
-                                        Image(systemName: "brain.head.profile")
-                                            .foregroundColor(.purple)
+                                        Image(systemName: "sparkles")
+                                            .foregroundColor(.blue)
                                             .font(.title3)
                                         Text("卦象分析")
                                             .font(.title3)
                                             .fontWeight(.bold)
-                                            .foregroundColor(.purple)
+                                            .foregroundColor(.blue)
                                         Spacer()
                                     }
                                     
+                                    // 使用格式化显示替代简单Text
                                     FormattedTextView(segments: formatAIText(result.aiInterpretation))
                                 }
                                 .padding(20)
                                 .background(
                                     RoundedRectangle(cornerRadius: 16)
-                                        .fill(
-                                            LinearGradient(
-                                                gradient: Gradient(colors: [.purple.opacity(0.08), .indigo.opacity(0.05)]),
-                                                startPoint: .topLeading,
-                                                endPoint: .bottomTrailing
-                                            )
-                                        )
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 16)
-                                                .stroke(
-                                                    LinearGradient(
-                                                        gradient: Gradient(colors: [.purple.opacity(0.3), .indigo.opacity(0.2)]),
-                                                        startPoint: .topLeading,
-                                                        endPoint: .bottomTrailing
-                                                    ),
-                                                    lineWidth: 1
-                                                )
-                                        )
+                                        .fill(Color(.systemBackground))
+                                        .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
                                 )
                                 
                                 // 建议指导
@@ -1227,9 +1327,16 @@ struct ResultView: View {
             
             let result = try await AIService.shared.interpretDivination(
                 question: question,
-                tossResults: tossResults
+                tossResults: tossResults,
+                divinationTime: currentTime,
+                divinationLocation: locationManager.currentCity
             )
             print("AI解读成功: \(result)")
+            
+            // 检查回答完整性
+            if result.aiInterpretation.isEmpty || result.advice.isEmpty {
+                print("警告：AI回答可能不完整")
+            }
             
             await MainActor.run {
                 self.divinationResult = result
@@ -1263,6 +1370,17 @@ struct ResultView: View {
             }
         }
     }
+}
+
+
+
+// 添加DateFormatter扩展
+extension DateFormatter {
+    static let divinationTime: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy年MM月dd日 HH:mm:ss"
+        return formatter
+    }()
 }
 
 #Preview {

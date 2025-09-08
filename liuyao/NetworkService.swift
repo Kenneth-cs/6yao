@@ -6,13 +6,15 @@ class NetworkService {
     
     // 请确认您的API密钥是否正确
     private let apiKey = "9e404d1b-7d3a-420f-9a39-34ceb2dd71d6"
+    // 移除URL末尾可能的逗号或空格
     private let baseURL = "https://ark.cn-beijing.volces.com/api/v3/chat/completions"
     
     func sendRequest<T: Codable>(
         body: [String: Any],
         responseType: T.Type
     ) async throws -> T {
-        guard let url = URL(string: baseURL) else {
+        // 确保URL格式正确
+        guard let url = URL(string: baseURL.trimmingCharacters(in: .whitespacesAndNewlines)) else {
             throw NetworkError.invalidURL
         }
         
@@ -21,8 +23,8 @@ class NetworkService {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         
-        // 增加超时时间到120秒
-        request.timeoutInterval = 120.0
+        // 增加超时时间到180秒
+        request.timeoutInterval = 180.0
         
         // 添加调试输出
         print("API Request URL: \(baseURL)")

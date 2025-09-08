@@ -42,6 +42,8 @@ struct DivinationResult {
     let aiInterpretation: String
     let advice: String
     let timestamp: Date
+    let divinationTime: Date  // 起卦时间
+    let divinationLocation: String  // 起卦地点
     
     // 获取卦象的二进制表示
     var hexagramBinary: String {
@@ -51,6 +53,26 @@ struct DivinationResult {
     // 获取卦象的阴阳表示
     var hexagramYinYang: String {
         return tossResults.map { $0 ? "阳" : "阴" }.joined(separator: "-")
+    }
+    
+    // 获取农历时间显示
+    var lunarTimeString: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy年MM月dd日 HH:mm"
+        let timeString = formatter.string(from: divinationTime)
+        
+        // 获取时辰
+        let hour = Calendar.current.component(.hour, from: divinationTime)
+        let chineseHour = getChineseHour(hour: hour)
+        
+        return "\(timeString) (\(chineseHour)时)"
+    }
+    
+    // 获取中文时辰
+    private func getChineseHour(hour: Int) -> String {
+        let hours = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"]
+        let index = (hour + 1) / 2 % 12
+        return hours[index]
     }
 }
 
