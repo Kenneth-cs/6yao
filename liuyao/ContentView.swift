@@ -350,6 +350,7 @@ struct DivinationView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var question = ""
     @State private var showCoinToss = false
+    @State private var divinationStartTime: Date?
     let onDismissToHome: () -> Void
     let currentTime: Date  // 添加起卦时间参数
     let locationManager: LocationManager  // 添加位置管理器参数
@@ -404,10 +405,11 @@ struct DivinationView: View {
                     
                     // 开始摇卦按钮
                     Button(action: {
-                        if !question.isEmpty {
-                            showCoinToss = true
-                        }
-                    }) {
+                            if !question.isEmpty {
+                                divinationStartTime = Date()  // 记录起卦开始时间
+                                showCoinToss = true
+                            }
+                        }) {
                         HStack {
                             Image(systemName: "sparkles")
                             Text("开始摇卦")
@@ -461,7 +463,7 @@ struct DivinationView: View {
             }
         }
         .sheet(isPresented: $showCoinToss) {
-            CoinTossView(question: question, currentTime: currentTime, locationManager: locationManager, onDismissToHome: onDismissToHome)
+            CoinTossView(question: question, currentTime: divinationStartTime ?? currentTime, locationManager: locationManager, onDismissToHome: onDismissToHome)
         }
     }
 }
@@ -829,8 +831,8 @@ struct CoinTossView: View {
             ResultView(
                 question: question, 
                 tossResults: tossResults,
-                currentTime: currentTime,
-                locationManager: locationManager,
+                divinationTime: currentTime,
+                divinationLocation: locationManager.currentCity,
                 onDismissToHome: onDismissToHome
             )
         }
@@ -896,14 +898,16 @@ struct CoinTossView: View {
 struct ResultView: View {
     let question: String
     let tossResults: [Bool]
-    let currentTime: Date
-    let locationManager: LocationManager
+    let divinationTime: Date  // 静态起卦时间
+    let divinationLocation: String  // 起卦地点
     @Environment(\.presentationMode) var presentationMode
     @State private var divinationResult: DivinationResult?
     @State private var isLoading = true
     @State private var errorMessage: String?
     @StateObject private var dataService = DataService()
     @State private var isSaved = false
+    @State private var streamingContent = ""
+    @State private var isStreaming = false
     let onDismissToHome: () -> Void
     
     // 添加计算属性来获取卦名和卦象描述
@@ -930,82 +934,110 @@ struct ResultView: View {
                     }
                     .padding(.top, 20)
                     
-                    // 起卦信息部分 - 移到卦象显示后面，不依赖AI解读结果
-                    VStack(alignment: .leading, spacing: 16) {
+                    // 起卦信息部分 - 优化布局
+                    VStack(alignment: .leading, spacing: 20) {
+                        // 标题
                         HStack {
                             Image(systemName: "info.circle.fill")
                                 .foregroundColor(.blue)
                                 .font(.title3)
                             Text("起卦信息")
-                                .font(.title3)
+                                .font(.title2)
                                 .fontWeight(.bold)
-                                .foregroundColor(.blue)
+                                .foregroundColor(.primary)
                             Spacer()
                         }
+                        .padding(.bottom, 8)
                         
-                        VStack(alignment: .leading, spacing: 12) {
-                            // 卦名和卦象描述
-                            VStack(alignment: .leading, spacing: 8) {
-                                HStack {
-                                    Text("卦名：")
-                                        .font(.body)
-                                        .fontWeight(.medium)
-                                        .foregroundColor(.secondary)
-                                    Text(hexagramInfo.name)
-                                        .font(.title2)
-                                        .fontWeight(.bold)
-                                        .foregroundColor(.primary)
-                                }
+                        // 卦名和描述
+                        VStack(alignment: .leading, spacing: 16) {
+                            // 卦名
+                            HStack(alignment: .top, spacing: 12) {
+                                Text("卦名")
+                                    .font(.body)
+                                    .fontWeight(.semibold)
+                                    .foregroundColor(.secondary)
+                                    .frame(width: 60, alignment: .leading)
                                 
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text("卦象描述：")
-                                        .font(.body)
-                                        .fontWeight(.medium)
-                                        .foregroundColor(.secondary)
-                                    Text(hexagramInfo.description)
-                                        .font(.body)
-                                        .foregroundColor(.primary)
-                                        .multilineTextAlignment(.leading)
-                                }
+                                Text(hexagramInfo.name)
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.primary)
+                                
+                                Spacer()
                             }
                             
-                            Divider()
-                                .background(Color.gray.opacity(0.3))
-                            
-                            // 起卦时间（公历）
-                            HStack {
-                                Image(systemName: "clock.fill")
-                                    .foregroundColor(.purple.opacity(0.7))
-                                    .font(.caption)
-                                Text("起卦时间：")
+                            // 卦象描述
+                            HStack(alignment: .top, spacing: 12) {
+                                Text("卦象")
                                     .font(.body)
-                                    .fontWeight(.medium)
+                                    .fontWeight(.semibold)
                                     .foregroundColor(.secondary)
-                                Text(DateFormatter.divinationTime.string(from: currentTime))
+                                    .frame(width: 60, alignment: .leading)
+                                
+                                Text(hexagramInfo.description)
                                     .font(.body)
                                     .foregroundColor(.primary)
+                                    .lineLimit(nil)
+                                    .multilineTextAlignment(.leading)
+                                
+                                Spacer()
+                            }
+                            
+                            // 分隔线
+                            Rectangle()
+                                .fill(Color.gray.opacity(0.2))
+                                .frame(height: 1)
+                                .padding(.vertical, 8)
+                            
+                            // 起卦时间（静态）
+                            HStack(alignment: .center, spacing: 12) {
+                                HStack(spacing: 6) {
+                                    Image(systemName: "clock.fill")
+                                        .foregroundColor(.blue)
+                                        .font(.body)
+                                    Text("起卦时间")
+                                        .font(.body)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.secondary)
+                                }
+                                .frame(width: 80, alignment: .leading)
+                                
+                                Text(DateFormatter.divinationTime.string(from: divinationTime))
+                                    .font(.body)
+                                    .fontWeight(.medium)
+                                    .foregroundColor(.primary)
+                                
+                                Spacer()
                             }
                             
                             // 起卦地点
-                            HStack {
-                                Image(systemName: "location.fill")
-                                    .foregroundColor(.purple.opacity(0.7))
-                                    .font(.caption)
-                                Text("起卦地点：")
+                            HStack(alignment: .center, spacing: 12) {
+                                HStack(spacing: 6) {
+                                    Image(systemName: "location.fill")
+                                        .foregroundColor(.blue)
+                                        .font(.body)
+                                    Text("起卦地点")
+                                        .font(.body)
+                                        .fontWeight(.semibold)
+                                        .foregroundColor(.secondary)
+                                }
+                                .frame(width: 80, alignment: .leading)
+                                
+                                Text(divinationLocation)
                                     .font(.body)
                                     .fontWeight(.medium)
-                                    .foregroundColor(.secondary)
-                                Text(locationManager.currentCity)
-                                    .font(.body)
                                     .foregroundColor(.primary)
+                                
+                                Spacer()
                             }
                         }
                     }
-                    .padding(20)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 24)
                     .background(
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(Color(.systemBackground))
-                            .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
+                        RoundedRectangle(cornerRadius: 0)
+                            .fill(Color.clear)
                     )
                     
                     // 卦象显示
@@ -1102,19 +1134,70 @@ struct ResultView: View {
                     
                     // AI解读部分
                     VStack(alignment: .leading, spacing: 20) {
-                        if isLoading {
-                            // 加载状态
-                            VStack(spacing: 12) {
-                                ProgressView()
-                                    .scaleEffect(1.2)
-                                    .tint(.purple)
+                        if isStreaming {
+                            // 流式显示正在生成的内容
+                            VStack(alignment: .leading, spacing: 12) {
+                                HStack {
+                                    Image(systemName: "sparkles")
+                                        .foregroundColor(.blue)
+                                        .font(.title3)
+                                    Text("卦象分析")
+                                        .font(.title3)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.blue)
+                                    
+                                    // 添加打字机效果指示器
+                                    Text("●")
+                                        .foregroundColor(.blue)
+                                        .opacity(0.7)
+                                        .scaleEffect(1.2)
+                                        .animation(.easeInOut(duration: 0.8).repeatForever(), value: isStreaming)
+                                    
+                                    Spacer()
+                                }
                                 
-                                Text("AI正在解读卦象...")
+                                // 实时显示生成的内容
+                                Text(streamingContent)
                                     .font(.body)
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(.primary)
+                                    .animation(.easeInOut(duration: 0.3), value: streamingContent)
+                            }
+                            .padding(20)
+                            .background(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(Color(.systemBackground))
+                                    .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
+                            )
+                        } else if isLoading {
+                            // 改进的加载状态
+                            VStack(spacing: 16) {
+                                // 添加进度指示
+                                HStack(spacing: 12) {
+                                    ProgressView()
+                                        .scaleEffect(1.2)
+                                        .tint(.purple)
+                                    
+                                    VStack(alignment: .leading, spacing: 4) {
+                                        Text("AI正在解读卦象...")
+                                            .font(.body)
+                                            .foregroundColor(.primary)
+                                        
+                                        Text("预计需要10-30秒")
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
+                                    }
+                                }
+                                
+                                // 添加取消按钮
+                                Button("取消解读") {
+                                    // 取消当前请求
+                                    cancelAIRequest()
+                                }
+                                .font(.caption)
+                                .foregroundColor(.orange)
                             }
                             .frame(maxWidth: .infinity)
-                            .padding(40)
+                            .padding(30)
                             .background(
                                 RoundedRectangle(cornerRadius: 16)
                                     .fill(
@@ -1194,8 +1277,31 @@ struct ResultView: View {
                                 .padding(20)
                                 .background(
                                     RoundedRectangle(cornerRadius: 16)
-                                        .fill(Color(.systemBackground))
-                                        .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
+                                        .fill(
+                                            LinearGradient(
+                                                gradient: Gradient(colors: [
+                                                    Color.blue.opacity(0.03),
+                                                    Color.cyan.opacity(0.02)
+                                                ]),
+                                                startPoint: .topLeading,
+                                                endPoint: .bottomTrailing
+                                            )
+                                        )
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 16)
+                                                .stroke(
+                                                    LinearGradient(
+                                                        gradient: Gradient(colors: [
+                                                            Color.blue.opacity(0.15),
+                                                            Color.cyan.opacity(0.1)
+                                                        ]),
+                                                        startPoint: .topLeading,
+                                                        endPoint: .bottomTrailing
+                                                    ),
+                                                    lineWidth: 1
+                                                )
+                                        )
+                                        .shadow(color: .blue.opacity(0.08), radius: 4, x: 0, y: 2)
                                 )
                                 
                                 // 建议指导
@@ -1218,7 +1324,10 @@ struct ResultView: View {
                                     RoundedRectangle(cornerRadius: 16)
                                         .fill(
                                             LinearGradient(
-                                                gradient: Gradient(colors: [.orange.opacity(0.08), .yellow.opacity(0.05)]),
+                                                gradient: Gradient(colors: [
+                                                    Color.orange.opacity(0.04),
+                                                    Color.yellow.opacity(0.02)
+                                                ]),
                                                 startPoint: .topLeading,
                                                 endPoint: .bottomTrailing
                                             )
@@ -1227,13 +1336,17 @@ struct ResultView: View {
                                             RoundedRectangle(cornerRadius: 16)
                                                 .stroke(
                                                     LinearGradient(
-                                                        gradient: Gradient(colors: [.orange.opacity(0.3), .yellow.opacity(0.2)]),
+                                                        gradient: Gradient(colors: [
+                                                            Color.orange.opacity(0.2),
+                                                            Color.yellow.opacity(0.15)
+                                                        ]),
                                                         startPoint: .topLeading,
                                                         endPoint: .bottomTrailing
                                                     ),
                                                     lineWidth: 1
                                                 )
                                         )
+                                        .shadow(color: .orange.opacity(0.1), radius: 4, x: 0, y: 2)
                                 )
                             }
                         }
@@ -1316,6 +1429,13 @@ struct ResultView: View {
         }
     }
     
+    private func cancelAIRequest() {
+        isLoading = false
+        isStreaming = false
+        streamingContent = ""
+        errorMessage = "解读已取消"
+    }
+    
     private func loadAIInterpretation() async {
         isLoading = true
         errorMessage = nil
@@ -1328,8 +1448,8 @@ struct ResultView: View {
             let result = try await AIService.shared.interpretDivination(
                 question: question,
                 tossResults: tossResults,
-                divinationTime: currentTime,
-                divinationLocation: locationManager.currentCity
+                divinationTime: divinationTime,
+                divinationLocation: divinationLocation
             )
             print("AI解读成功: \(result)")
             

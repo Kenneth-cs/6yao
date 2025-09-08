@@ -35,7 +35,7 @@ class LocationManager: NSObject, ObservableObject {
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(location) { [weak self] placemarks, error in
             DispatchQueue.main.async {
-                if let error = error {
+                if error != nil {
                     self?.locationError = "地址解析失败"
                     self?.currentCity = "定位失败"
                     return

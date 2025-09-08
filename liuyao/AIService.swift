@@ -80,6 +80,94 @@ class AIService {
         }
     }
     
+    // 将 interpretDivinationStream 移到类内部
+    func interpretDivinationStream(
+        question: String,
+        tossResults: [Bool],
+        divinationTime: Date,
+        divinationLocation: String,
+        onUpdate: @escaping (String) -> Void
+    ) async throws -> DivinationResult {
+        // 获取卦象信息
+        let binaryString = tossResults.map { $0 ? "1" : "0" }.joined()
+        let hexagramData = HexagramData.getHexagram(for: binaryString)
+        let hexagramYinYang = tossResults.map { $0 ? "阳" : "阴" }.joined(separator: "")
+        
+        // 构建提示词 - 现在可以访问私有方法
+        let prompt = buildPrompt(
+            question: question,
+            hexagramName: hexagramData.name,
+            hexagramDescription: hexagramData.description,
+            hexagramYinYang: hexagramYinYang,
+            tossResults: tossResults,
+            divinationTime: divinationTime,
+            divinationLocation: divinationLocation
+        )
+        
+        // 构建请求体
+        let requestBody: [String: Any] = [
+            "model": "doubao-seed-1-6-thinking-250715",
+            "messages": [
+                [
+                    "role": "user",
+                    "content": prompt
+                ]
+            ],
+            "max_tokens": 2000,
+            "temperature": 0.7,
+            "stream": true
+        ]
+        
+        // 实现流式数据处理
+        var accumulatedContent = ""
+        
+        // 创建URL请求
+        guard let url = URL(string: "https://ark.cn-beijing.volces.com/api/v3/chat/completions") else {
+            throw AIServiceError.requestFailed(NSError(domain: "Invalid URL", code: 0, userInfo: nil))
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue("Bearer ep-20241230174654-8xqzr", forHTTPHeaderField: "Authorization")
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: requestBody)
+        } catch {
+            throw AIServiceError.requestFailed(error)
+        }
+        
+        // 使用URLSession处理流式响应
+        let (data, response) = try await URLSession.shared.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse,
+              httpResponse.statusCode == 200 else {
+            throw AIServiceError.requestFailed(NSError(domain: "HTTP Error", code: (response as? HTTPURLResponse)?.statusCode ?? 0, userInfo: nil))
+        }
+        
+        // 处理响应数据
+        if let responseString = String(data: data, encoding: .utf8) {
+            accumulatedContent = responseString
+            onUpdate(responseString)
+        }
+        
+        // 解析AI响应 - 现在可以访问私有方法
+        let parsedResponse = parseAIResponse(accumulatedContent)
+        
+        // 返回DivinationResult
+        return DivinationResult(
+            question: question,
+            tossResults: tossResults,
+            hexagramName: hexagramData.name,
+            hexagramDescription: hexagramData.description,
+            aiInterpretation: parsedResponse.interpretation,
+            advice: parsedResponse.advice,
+            timestamp: Date(),
+            divinationTime: divinationTime,
+            divinationLocation: divinationLocation
+        )
+    }
+    
     private func buildPrompt(
         question: String,
         hexagramName: String,
@@ -100,7 +188,7 @@ class AIService {
         let timeString = formatter.string(from: divinationTime)
         
         return """
-        你是一位精通六爻占卜的大师，请根据以下信息为用户提供专业的卦象解读：
+        你是一位精通六爻占卜的大师，请根据以下信息为用户提供专业的卦象解读（2025年为乙巳年（木蛇））：
         
         【用户问题】：\(question)
         
@@ -201,7 +289,7 @@ enum AIServiceError: Error, LocalizedError {
     }
 }
 
-// 添加辅助函数：获取中文时辰
+// 保留辅助函数在类外部
 private func getChineseHour(from hour: Int) -> String {
     let chineseHours = [
         "子", "丑", "丑", "寅", "寅", "卯", "卯", "辰", "辰", "巳", "巳", "午",
