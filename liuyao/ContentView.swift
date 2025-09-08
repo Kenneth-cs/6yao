@@ -5,6 +5,16 @@ struct ContentView: View {
     @State private var showDivination = false
     @State private var showHistory = false
     @State private var showLearning = false
+    @State private var currentTime = Date()
+    
+    // 时间格式化器
+    private let timeFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy年MM月dd日 HH:mm:ss"
+        return formatter
+    }()
+    
+    private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         NavigationView {
@@ -47,7 +57,7 @@ struct ContentView: View {
                     .padding(.bottom, 100)
                 }
                 
-                VStack(spacing: 40) {
+                VStack(spacing: 30) {
                     // 顶部标题区域
                     VStack(spacing: 16) {
                         Text("六爻智卦")
@@ -61,14 +71,49 @@ struct ContentView: View {
                                 )
                             )
                         
+                        // 实时时间模块 - 缩小间距
+                        VStack(spacing: 8) {
+                            HStack(spacing: 4) {
+                                Image(systemName: "clock.fill")
+                                    .foregroundColor(.purple.opacity(0.7))
+                                    .font(.caption)
+                                Text("起卦时辰")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                    .fontWeight(.medium)
+                                Text("(时间节点影响卦象解读)")
+                                    .font(.caption2)
+                                    .foregroundColor(.secondary.opacity(0.8))
+                                    .italic()
+                            }
+                            
+                            Text(timeFormatter.string(from: currentTime))
+                                .font(.system(size: 15, weight: .medium, design: .monospaced))
+                                .foregroundColor(.primary)
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 8)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(Color.purple.opacity(0.08))
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .stroke(Color.purple.opacity(0.25), lineWidth: 1)
+                                        )
+                                )
+                        }
+                        .padding(.horizontal, 20)
+                        .onReceive(timer) { _ in
+                            currentTime = Date()
+                        }
+                        
                         Text("提问，摇卦，推演")
                             .font(.title3)
                             .foregroundColor(.secondary)
                             .fontWeight(.medium)
                     }
-                    .padding(.top, 60)
+                    .padding(.top, 50)
                     
-                    // 中央问卦区域
+                    // 中央问卦区域 - 向上调整
                     VStack(spacing: 24) {
                         // 主要问卦按钮
                         Button(action: {
