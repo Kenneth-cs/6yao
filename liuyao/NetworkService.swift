@@ -22,9 +22,8 @@ class NetworkService {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
-        
-        // 增加超时时间到180秒
-        request.timeoutInterval = 180.0
+        request.timeoutInterval = 30  // 设置合理的超时时间30秒
+        request.cachePolicy = .reloadIgnoringLocalCacheData  // 忽略缓存
         
         // 添加调试输出
         print("API Request URL: \(baseURL)")
@@ -41,30 +40,45 @@ class NetworkService {
         }
         
         do {
-            print("开始发送网络请求...")
+            print("[NetworkService] 发送请求到: \(url)")
+            print("[NetworkService] 请求体大小: \(request.httpBody?.count ?? 0) 字节")
+            if let bodyData = request.httpBody, let bodyString = String(data: bodyData, encoding: .utf8) {
+                print("[NetworkService] 请求体内容: \(bodyString.prefix(500))...")
+            }
+            
+            let startTime = Date()
             let (data, response) = try await URLSession.shared.data(for: request)
+            let duration = Date().timeIntervalSince(startTime)
             
-            // 打印响应信息
-            if let httpResponse = response as? HTTPURLResponse {
-                print("HTTP状态码: \(httpResponse.statusCode)")
-            }
-            
-            if let responseString = String(data: data, encoding: .utf8) {
-                print("API响应: \(responseString)")
-            }
+            print("[NetworkService] 请求耗时: \(String(format: "%.2f", duration))秒")
             
             guard let httpResponse = response as? HTTPURLResponse else {
+                print("[NetworkService] 错误: 无效响应类型")
                 throw NetworkError.invalidResponse
             }
             
+            print("[NetworkService] 响应状态码: \(httpResponse.statusCode)")
+            print("[NetworkService] 响应数据大小: \(data.count) 字节")
+            
+            if data.count < 1000 {
+                print("[NetworkService] 响应数据: \(String(data: data, encoding: .utf8) ?? "无法解析")")
+            } else {
+                print("[NetworkService] 响应数据(前500字符): \(String(data: data, encoding: .utf8)?.prefix(500) ?? "无法解析")...")
+            }
+            
             guard 200...299 ~= httpResponse.statusCode else {
+                print("[NetworkService] HTTP错误: \(httpResponse.statusCode)")
                 throw NetworkError.serverError(httpResponse.statusCode)
             }
             
             let decodedResponse = try JSONDecoder().decode(T.self, from: data)
+            print("[NetworkService] JSON解析成功")
             return decodedResponse
         } catch {
-            print("网络请求失败: \(error)")
+            print("[NetworkService] 网络请求失败: \(error)")
+            if let urlError = error as? URLError {
+                print("[NetworkService] URLError详情: code=\(urlError.code.rawValue), description=\(urlError.localizedDescription)")
+            }
             throw NetworkError.networkError(error)
         }
     }

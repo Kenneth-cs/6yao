@@ -78,6 +78,9 @@ struct DivinationResult {
 
 // MARK: - 六十四卦数据
 struct HexagramData {
+    let name: String
+    let description: String
+    
     static let hexagrams: [String: (name: String, description: String)] = [
         "000000": ("坤", "坤为地，厚德载物，包容万象"),
         "000001": ("复", "地雷复，一阳来复，万象更新"),
@@ -146,6 +149,13 @@ struct HexagramData {
     ]
     
     static func getHexagram(for binary: String) -> (name: String, description: String) {
-        return hexagrams[binary] ?? ("未知卦象", "此卦象暂未收录，请咨询专业人士")
+        return hexagrams[binary] ?? ("未知卦象", "卦象信息未找到")
+    }
+    
+    // 新增方法：根据布尔数组获取卦象数据
+    static func getHexagram(for tossResults: [Bool]) -> HexagramData? {
+        let binary = tossResults.map { $0 ? "1" : "0" }.joined()
+        let hexagram = getHexagram(for: binary)
+        return HexagramData(name: hexagram.name, description: hexagram.description)
     }
 }

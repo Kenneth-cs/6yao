@@ -3,9 +3,6 @@ import Foundation
 import CoreLocation
 
 struct ContentView: View {
-    @State private var showDivination = false
-    @State private var showHistory = false
-    @State private var showLearning = false
     @State private var currentTime = Date()
     @StateObject private var locationManager = LocationManager()
     
@@ -19,7 +16,7 @@ struct ContentView: View {
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 // 背景渐变 - 神秘紫色主题
                 LinearGradient(
@@ -142,10 +139,11 @@ struct ContentView: View {
                     
                     // 中央问卦区域 - 向上调整
                     VStack(spacing: 24) {
-                        // 主要问卦按钮
-                        Button(action: {
-                            showDivination = true
-                        }) {
+                        // 主要问卦按钮 - 改为NavigationLink
+                        NavigationLink(destination: DivinationPageView(
+                            currentTime: currentTime,
+                            locationManager: locationManager
+                        )) {
                             VStack(spacing: 12) {
                                 // 古代铜钱图标
                                 ZStack {
@@ -253,9 +251,7 @@ struct ContentView: View {
                         }
                         .buttonStyle(PlainButtonStyle())
                         
-
-                        
-                        // 示例问题
+                        // 示例问题按钮 - 改为NavigationLink
                         VStack(spacing: 8) {
                             Text("或者问问其他的...")
                                 .font(.caption)
@@ -263,8 +259,12 @@ struct ContentView: View {
                             
                             HStack(spacing: 12) {
                                 ForEach(["工作", "感情", "健康"], id: \.self) { topic in
-                                    Button(topic) {
-                                        showDivination = true
+                                    NavigationLink(destination: DivinationPageView(
+                                        currentTime: currentTime,
+                                        locationManager: locationManager,
+                                        defaultQuestion: getDefaultQuestion(for: topic)
+                                    )) {
+                                        Text(topic)
                                     }
                                     .font(.caption)
                                     .padding(.horizontal, 12)
@@ -287,15 +287,17 @@ struct ContentView: View {
                     
                     Spacer()
                     
-                    // 底部导航
+                    // 底部导航 - 改为NavigationLink
                     HStack(spacing: 40) {
-                        NavigationButton(icon: "book.fill", title: "学习", action: {
-                            showLearning = true
-                        })
-                        NavigationButton(icon: "clock.fill", title: "历史", action: {
-                            showHistory = true
-                        })
-                        NavigationButton(icon: "person.fill", title: "我的", action: {})
+                        NavigationLink(destination: LearningPageView()) {
+                            NavigationButtonContent(icon: "book.fill", title: "学习")
+                        }
+                        NavigationLink(destination: HistoryPageView()) {
+                            NavigationButtonContent(icon: "clock.fill", title: "历史")
+                        }
+                        Button(action: {}) {
+                            NavigationButtonContent(icon: "person.fill", title: "我的")
+                        }
                     }
                     .padding(.bottom, 30)
                 }
@@ -306,41 +308,37 @@ struct ContentView: View {
         .onAppear {
             locationManager.requestLocation()
         }
-        .sheet(isPresented: $showDivination) {
-            DivinationView(
-                onDismissToHome: {
-                    showDivination = false
-                },
-                currentTime: currentTime,
-                locationManager: locationManager
-            )
-        }
-        .sheet(isPresented: $showHistory) {
-            HistoryView()
-        }
-        .sheet(isPresented: $showLearning) {
-            LearningView()
+    }
+    
+    // 添加默认问题生成函数
+    private func getDefaultQuestion(for topic: String) -> String {
+        switch topic {
+        case "工作":
+            return "我的工作发展如何？"
+        case "感情":
+            return "我的感情状况怎样？"
+        case "健康":
+            return "我的身体健康如何？"
+        default:
+            return ""
         }
     }
 }
 
-// 导航按钮组件
-struct NavigationButton: View {
+// 修改导航按钮组件
+struct NavigationButtonContent: View {
     let icon: String
     let title: String
-    let action: () -> Void
     
     var body: some View {
-        Button(action: action) {
-            VStack(spacing: 4) {
-                Image(systemName: icon)
-                    .font(.title2)
-                    .foregroundColor(.gray)
-                
-                Text(title)
-                    .font(.caption)
-                    .foregroundColor(.gray)
-            }
+        VStack(spacing: 4) {
+            Image(systemName: icon)
+                .font(.title2)
+                .foregroundColor(.gray)
+            
+            Text(title)
+                .font(.caption)
+                .foregroundColor(.gray)
         }
     }
 }
@@ -356,10 +354,9 @@ struct DivinationView: View {
     let locationManager: LocationManager  // 添加位置管理器参数
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                // 背景 - 紫色主题
-                LinearGradient(
+        ZStack {
+            // 背景 - 紫色主题
+            LinearGradient(
                     gradient: Gradient(colors: [
                         Color.purple.opacity(0.08),
                         Color.indigo.opacity(0.05),
@@ -460,10 +457,11 @@ struct DivinationView: View {
                     }
                     .foregroundColor(.purple)
                 }
-            }
         }
         .sheet(isPresented: $showCoinToss) {
-            CoinTossView(question: question, currentTime: divinationStartTime ?? currentTime, locationManager: locationManager, onDismissToHome: onDismissToHome)
+            NavigationStack {
+                CoinTossView(question: question, currentTime: divinationStartTime ?? currentTime, locationManager: locationManager, onDismissToHome: onDismissToHome)
+            }
         }
     }
 }
@@ -504,12 +502,12 @@ struct CoinTossView: View {
     @State private var coinScale: CGFloat = 1.0
     @State private var currentAnimationIndex = 0
     @State private var hasStarted = false
+    @State private var hexagramInfo: (name: String, description: String)? = nil
     let onDismissToHome: () -> Void
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                // 神秘背景
+        ZStack {
+            // 神秘背景
                 LinearGradient(
                     gradient: Gradient(colors: [
                         Color.black.opacity(0.9),
@@ -796,10 +794,12 @@ struct CoinTossView: View {
                     Spacer()
                     
                     // 完成按钮
-                    if tossResults.count >= 6 && !isAnimating {
-                        Button(action: {
-                            showResult = true
-                        }) {
+                    if tossResults.count >= 6 && !isAnimating, let hexagramData = hexagramInfo {
+                        NavigationLink(destination: DivinationResultPageView(
+                            question: question,
+                            tossResults: tossResults,
+                            hexagramData: hexagramData
+                        )) {
                             HStack {
                                 Image(systemName: "eye.fill")
                                 Text("查看卦象解读")
@@ -826,16 +826,6 @@ struct CoinTossView: View {
                 .padding(.horizontal, 20)
             }
             .navigationBarHidden(true)
-        }
-        .sheet(isPresented: $showResult) {
-            ResultView(
-                question: question, 
-                tossResults: tossResults,
-                divinationTime: currentTime,
-                divinationLocation: locationManager.currentCity,
-                onDismissToHome: onDismissToHome
-            )
-        }
     }
     
     // 开始占卜函数
@@ -855,6 +845,10 @@ struct CoinTossView: View {
     private func performNextToss() {
         guard currentAnimationIndex < 6 else {
             isAnimating = false
+            // 所有抛掷完成后计算卦象信息
+            if tossResults.count == 6 {
+                hexagramInfo = HexagramData.getHexagram(for: tossResults.map { $0 ? "1" : "0" }.joined())
+            }
             return
         }
         
