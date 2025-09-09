@@ -195,17 +195,32 @@ struct DivinationResultPageView: View {
                             ProgressView()
                                 .scaleEffect(0.8)
                                 .tint(.purple)
-                            Text("AI正在解读卦象...")
-                                .font(.body)
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("AI正在解读卦象...")
+                                    .font(.body)
+                                    .foregroundColor(.primary)
+                                
+                                Text("请稍候，正在为您分析卦象含义")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                        
+                        // 改进的提示信息
+                        VStack(spacing: 8) {
+                            Text("💡 解读过程可能需要30-60秒")
+                                .font(.caption)
+                                .foregroundColor(.orange)
+                            
+                            Text("网络不佳时会自动重试，请耐心等待")
+                                .font(.caption2)
                                 .foregroundColor(.secondary)
                         }
                         
-                        Text("预计需要10-30秒")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                        
                         Button("取消解读") {
                             // 取消解读逻辑
+                            isLoading = false
+                            aiInterpretation = "解读已取消"
                         }
                         .font(.subheadline)
                         .foregroundColor(.orange)
@@ -228,11 +243,52 @@ struct DivinationResultPageView: View {
                                 Spacer()
                             }
                             
-                            Text(aiInterpretation)
-                                .font(.body)
-                                .foregroundColor(.primary)
-                                .lineSpacing(4)
-                                .multilineTextAlignment(.leading)
+                            if aiInterpretation.contains("解读失败") || aiInterpretation.contains("超时") || aiInterpretation.contains("网络") {
+                                // 错误状态显示
+                                VStack(spacing: 12) {
+                                    Image(systemName: "wifi.exclamationmark")
+                                        .font(.title2)
+                                        .foregroundColor(.orange)
+                                    
+                                    Text("网络请求超时")
+                                        .font(.headline)
+                                        .foregroundColor(.primary)
+                                    
+                                    Text("请检查网络连接，或稍后重试")
+                                        .font(.body)
+                                        .foregroundColor(.secondary)
+                                        .multilineTextAlignment(.center)
+                                    
+                                    Button("重新解读") {
+                                        isLoading = true
+                                        aiInterpretation = ""
+                                        // 延迟一点重新请求
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                            requestAIInterpretation()
+                                        }
+                                    }
+                                    .font(.body)
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal, 20)
+                                    .padding(.vertical, 8)
+                                    .background(
+                                        LinearGradient(
+                                            gradient: Gradient(colors: [.purple, .indigo]),
+                                            startPoint: .leading,
+                                            endPoint: .trailing
+                                        )
+                                    )
+                                    .cornerRadius(20)
+                                }
+                                .padding(.vertical, 20)
+                            } else {
+                                // 正常解读结果显示
+                                Text(aiInterpretation)
+                                    .font(.body)
+                                    .foregroundColor(.primary)
+                                    .lineSpacing(4)
+                                    .multilineTextAlignment(.leading)
+                            }
                         }
                         .padding(20)
                         .background(
@@ -338,6 +394,12 @@ struct DivinationResultPageView: View {
         
         Task {
             do {
+                // 先测试API连接
+                print("[DivinationResultPageView] 测试API连接...")
+                let testResult = try await aiService.testAPIConnection()
+                print("[DivinationResultPageView] API连接测试结果: \(testResult)")
+                
+                // 如果测试成功，进行正式解读
                 print("[DivinationResultPageView] 调用AIService.interpretDivinationStream")
                 let hexagramStruct = HexagramData(name: hexagramData.name, description: hexagramData.description)
                 
@@ -356,8 +418,19 @@ struct DivinationResultPageView: View {
                 }
             } catch {
                 print("[DivinationResultPageView] AI解读失败: \(error.localizedDescription)")
+                
+                // 更详细的错误处理
+                let errorMessage: String
+                if let networkError = error as? NetworkError {
+                    errorMessage = networkError.localizedDescription
+                } else if let aiError = error as? AIServiceError {
+                    errorMessage = aiError.localizedDescription
+                } else {
+                    errorMessage = "网络连接超时，请检查网络后重试"
+                }
+                
                 await MainActor.run {
-                    self.aiInterpretation = "解读失败，请稍后重试。错误信息：\(error.localizedDescription)"
+                    self.aiInterpretation = "解读失败：\(errorMessage)"
                     self.isLoading = false
                 }
             }

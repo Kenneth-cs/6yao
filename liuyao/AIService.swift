@@ -132,6 +132,28 @@ class AIService: ObservableObject {
         }
     }
     
+    // 添加简化的测试方法
+    func testAPIConnection() async throws -> String {
+        let testBody: [String: Any] = [
+            "model": "doubao-seed-1-6-thinking-250715",
+            "messages": [
+                [
+                    "role": "user",
+                    "content": "简单测试，请回复'连接成功'"
+                ]
+            ],
+            "max_tokens": 50,
+            "temperature": 0.1
+        ]
+        
+        let response = try await NetworkService.shared.sendRequest(
+            body: testBody,
+            responseType: AIResponse.self
+        )
+        
+        return response.choices.first?.message.content ?? "测试失败"
+    }
+    
     // 添加新的流式解读方法，接受HexagramData参数
     func interpretDivinationStream(
         question: String,
