@@ -307,11 +307,7 @@ struct DivinationResultPageView: View {
                                 }
                                 
                                 if !hexagramAnalysis.isEmpty {
-                                    Text(hexagramAnalysis)
-                                        .font(.body)
-                                        .foregroundColor(.primary)
-                                        .lineSpacing(6)
-                                        .multilineTextAlignment(.leading)
+                                    FormattedDivinationText(content: hexagramAnalysis)
                                 } else {
                                     Text("正在解析卦象含义...")
                                         .font(.body)
@@ -347,11 +343,7 @@ struct DivinationResultPageView: View {
                                 }
                                 
                                 if !questionInterpretation.isEmpty {
-                                    Text(questionInterpretation)
-                                        .font(.body)
-                                        .foregroundColor(.primary)
-                                        .lineSpacing(6)
-                                        .multilineTextAlignment(.leading)
+                                    FormattedDivinationText(content: questionInterpretation)
                                 } else {
                                     Text("正在解读问题...")
                                         .font(.body)
@@ -387,11 +379,7 @@ struct DivinationResultPageView: View {
                                 }
                                 
                                 if !guidanceAdvice.isEmpty {
-                                    Text(guidanceAdvice)
-                                        .font(.body)
-                                        .foregroundColor(.primary)
-                                        .lineSpacing(6)
-                                        .multilineTextAlignment(.leading)
+                                    FormattedDivinationText(content: guidanceAdvice)
                                 } else {
                                     Text("正在生成建议指导...")
                                         .font(.body)
@@ -625,12 +613,53 @@ struct DivinationResultPageView: View {
             guidanceContent = String(interpretation.suffix(totalLength - secondThird))
         }
         
-        // 更新状态
+        // 更新状态 - 清理和格式化文本
         DispatchQueue.main.async {
-            self.hexagramAnalysis = hexagramContent.isEmpty ? "暂无卦象解析" : hexagramContent
-            self.questionInterpretation = questionContent.isEmpty ? "暂无问题解读" : questionContent
-            self.guidanceAdvice = guidanceContent.isEmpty ? "暂无建议指导" : guidanceContent
+            self.hexagramAnalysis = hexagramContent.isEmpty ? "暂无卦象解析" : self.cleanAndFormatText(hexagramContent)
+            self.questionInterpretation = questionContent.isEmpty ? "暂无问题解读" : self.cleanAndFormatText(questionContent)
+            self.guidanceAdvice = guidanceContent.isEmpty ? "暂无建议指导" : self.cleanAndFormatText(guidanceContent)
         }
+    }
+    
+    // 清理和格式化文本
+    private func cleanAndFormatText(_ text: String) -> String {
+        var cleanedText = text
+        
+        // 1. 移除Markdown和特殊格式符号
+        let symbolsToRemove = [
+            "**", "***", "####", "###", "##", "#",
+            "---", "___", "```", "`",
+            "~~", "__", "*",
+            "【", "】"
+        ]
+        for symbol in symbolsToRemove {
+            cleanedText = cleanedText.replacingOccurrences(of: symbol, with: "")
+        }
+        
+        // 2. 处理换行和段落
+        // 先统一换行符
+        cleanedText = cleanedText.replacingOccurrences(of: "\r\n", with: "\n")
+        cleanedText = cleanedText.replacingOccurrences(of: "\r", with: "\n")
+        
+        // 在中文句号、问号、感叹号后添加换行
+        cleanedText = cleanedText.replacingOccurrences(of: "。", with: "。\n")
+        cleanedText = cleanedText.replacingOccurrences(of: "！", with: "！\n")
+        cleanedText = cleanedText.replacingOccurrences(of: "？", with: "？\n")
+        
+        // 在冒号后添加换行（用于要点说明）
+        cleanedText = cleanedText.replacingOccurrences(of: "：", with: "：\n")
+        
+        // 3. 处理数字序号
+        cleanedText = cleanedText.replacingOccurrences(of: "([0-9]+)\\.", with: "\n$1.", options: .regularExpression)
+        
+        // 4. 清理多余空格和空行
+        cleanedText = cleanedText.replacingOccurrences(of: " +", with: " ", options: .regularExpression)
+        cleanedText = cleanedText.replacingOccurrences(of: "\n\n+", with: "\n\n", options: .regularExpression)
+        
+        // 5. 清理首尾空白
+        cleanedText = cleanedText.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        return cleanedText
     }
     
     private func startNetworkMonitoring() {
@@ -648,6 +677,133 @@ struct DivinationResultPageView: View {
     private func stopNetworkMonitoring() {
           networkMonitor.cancel()
       }
+}
+
+// MARK: - 格式化文本显示组件
+struct FormattedDivinationText: View {
+    let content: String
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            ForEach(formatTextContent(content), id: \.id) { segment in
+                HStack(alignment: .top, spacing: 8) {
+                    if segment.isBulletPoint {
+                        // 要点样式
+                        VStack {
+                            Circle()
+                                .fill(Color.blue.opacity(0.6))
+                                .frame(width: 6, height: 6)
+                                .padding(.top, 8)
+                            Spacer()
+                        }
+                        
+                        Text(segment.text)
+                            .font(.body)
+                            .foregroundColor(.primary)
+                            .lineSpacing(6)
+                            .fixedSize(horizontal: false, vertical: true)
+                    } else if segment.isImportant {
+                        // 重要信息样式
+                        VStack {
+                            Image(systemName: "star.fill")
+                                .font(.caption)
+                                .foregroundColor(.orange.opacity(0.7))
+                                .padding(.top, 4)
+                            Spacer()
+                        }
+                        
+                        Text(segment.text)
+                            .font(.body)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.primary)
+                            .lineSpacing(6)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 6)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color.orange.opacity(0.1))
+                            )
+                    } else {
+                        // 普通文本样式
+                        Text(segment.text)
+                            .font(.body)
+                            .foregroundColor(.primary)
+                            .lineSpacing(6)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    
+                    Spacer()
+                }
+                .padding(.vertical, 4)
+            }
+        }
+    }
+    
+    private func formatTextContent(_ text: String) -> [TextSegment] {
+        var segments: [TextSegment] = []
+        let lines = text.components(separatedBy: .newlines)
+        
+        for (index, line) in lines.enumerated() {
+            let trimmedLine = line.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            // 跳过空行
+            if trimmedLine.isEmpty { continue }
+            
+            // 判断是否是要点（数字开头或包含特定关键词）
+            let isBulletPoint = trimmedLine.hasPrefix("1.") || 
+                               trimmedLine.hasPrefix("2.") || 
+                               trimmedLine.hasPrefix("3.") ||
+                               trimmedLine.hasPrefix("4.") ||
+                               trimmedLine.hasPrefix("5.") ||
+                               trimmedLine.hasPrefix("•") ||
+                               trimmedLine.hasPrefix("-") ||
+                               trimmedLine.hasPrefix("⭐") ||
+                               trimmedLine.contains("比如") ||
+                               trimmedLine.contains("例如") ||
+                               trimmedLine.contains("建议") ||
+                               trimmedLine.contains("避免") ||
+                               trimmedLine.contains("不要") ||
+                               trimmedLine.contains("应该")
+            
+            // 判断是否是重要信息（包含关键词或较短的总结性语句）
+            let isImportant = trimmedLine.contains("核心") ||
+                             trimmedLine.contains("关键") ||
+                             trimmedLine.contains("重要") ||
+                             trimmedLine.contains("注意") ||
+                             trimmedLine.contains("记住") ||
+                             trimmedLine.contains("总结") ||
+                             trimmedLine.contains("最后") ||
+                             trimmedLine.contains("结论") ||
+                             trimmedLine.contains("要点") ||
+                             trimmedLine.contains("提醒") ||
+                             (trimmedLine.count < 40 && !isBulletPoint && trimmedLine.contains("："))
+            
+            // 清理行内容
+            var cleanLine = trimmedLine
+            if isBulletPoint {
+                cleanLine = cleanLine.replacingOccurrences(of: "^[0-9]+\\.", with: "", options: .regularExpression)
+                cleanLine = cleanLine.replacingOccurrences(of: "^[•-]", with: "", options: .regularExpression)
+                cleanLine = cleanLine.trimmingCharacters(in: .whitespacesAndNewlines)
+            }
+            
+            segments.append(TextSegment(
+                id: index,
+                text: cleanLine,
+                isBulletPoint: isBulletPoint,
+                isImportant: isImportant && !isBulletPoint
+            ))
+        }
+        
+        return segments
+    }
+}
+
+struct TextSegment {
+    let id: Int
+    let text: String
+    let isBulletPoint: Bool
+    let isImportant: Bool
 }
 
 #Preview {
