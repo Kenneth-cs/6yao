@@ -158,7 +158,9 @@ class AIService: ObservableObject {
     func interpretDivinationStream(
         question: String,
         hexagram: HexagramData,
-        tossResults: [Bool]
+        tossResults: [Bool],
+        divinationTime: Date = Date(),
+        divinationLocation: String = "未知地点"
     ) async throws -> String {
         
         let hexagramYinYang = tossResults.map { $0 ? "阳" : "阴" }.joined(separator: "-")
@@ -170,8 +172,8 @@ class AIService: ObservableObject {
             hexagramDescription: hexagram.description,
             hexagramYinYang: hexagramYinYang,
             tossResults: tossResults,
-            divinationTime: Date(),
-            divinationLocation: "未知"
+            divinationTime: divinationTime,
+            divinationLocation: divinationLocation
         )
         
         let requestBody: [String: Any] = [
@@ -230,7 +232,7 @@ class AIService: ObservableObject {
         let chineseHour = getChineseHour(from: hour)
         
         return """
-        作为一位资深的六爻占卜师，请为以下问题进行详细解读：
+        作为一位资深的六爻占卜师，请为以下问题进行详细解读（当前是2025年乙巳年，9月乙酉月）：
         
         问题：\(question)
         
@@ -244,7 +246,7 @@ class AIService: ObservableObject {
         请按以下格式提供解读：
         
         【卦象解析】
-        [详细分析卦象的含义和象征]
+        [结合起卦时间、地点，详细分析卦象的含义和象征]
         
         【问题解读】
         [针对具体问题的分析和解答]

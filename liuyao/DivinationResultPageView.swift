@@ -5,6 +5,8 @@ struct DivinationResultPageView: View {
     let question: String
     let tossResults: [Bool]
     let hexagramData: (name: String, description: String)
+    let currentLocation: String
+    let onDismiss: () -> Void
     @State private var aiInterpretation: String = ""
     @State private var hexagramAnalysis: String = ""
     @State private var questionInterpretation: String = ""
@@ -17,7 +19,6 @@ struct DivinationResultPageView: View {
     @State private var networkMonitor = NWPathMonitor()
     @State private var isNetworkAvailable = true
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ScrollView {
@@ -39,10 +40,11 @@ struct DivinationResultPageView: View {
                         
                         Spacer()
                         
-                        Button(action: {
-                            // 回到首页 - 关闭全屏视图，返回到根视图
-                            presentationMode.wrappedValue.dismiss()
-                        }) {
+                         Button(action: {
+                             // 回到首页 - 通过回调关闭页面
+                             print("[DivinationResultPageView] 点击完成按钮")
+                             onDismiss()
+                         }) {
                             Text("完成")
                                 .font(.headline)
                                 .foregroundColor(.purple)
@@ -130,7 +132,7 @@ struct DivinationResultPageView: View {
                                     .font(.subheadline)
                                     .foregroundColor(.secondary)
                                 
-                                Text("北京市")
+                                Text(currentLocation.isEmpty ? "未知地点" : currentLocation)
                                     .font(.subheadline)
                                     .foregroundColor(.primary)
                                 
@@ -438,10 +440,12 @@ struct DivinationResultPageView: View {
                                     )
                             }
                             
-                            // 重新问卦按钮
-                            Button(action: {
-                                presentationMode.wrappedValue.dismiss()
-                            }) {
+                             // 重新问卦按钮
+                             Button(action: {
+                                 // 通过回调关闭页面，返回首页
+                                 print("[DivinationResultPageView] 点击重新问卦按钮")
+                                 onDismiss()
+                             }) {
                                 Text("重新问卦")
                                     .font(.body)
                                     .fontWeight(.medium)
@@ -514,7 +518,9 @@ struct DivinationResultPageView: View {
                 let interpretation = try await aiService.interpretDivinationStream(
                     question: question,
                     hexagram: hexagramStruct,
-                    tossResults: tossResults
+                    tossResults: tossResults,
+                    divinationTime: divinationTime,
+                    divinationLocation: currentLocation.isEmpty ? "未知地点" : currentLocation
                 )
                 
                 print("[DivinationResultPageView] AI解读完成，长度: \(interpretation.count)")
@@ -650,7 +656,9 @@ struct DivinationResultPageView: View {
         DivinationResultPageView(
             question: "我的事业发展如何？",
             tossResults: [true, false, true, false, true, false],
-            hexagramData: (name: hexagramInfo.name, description: hexagramInfo.description)
+            hexagramData: (name: hexagramInfo.name, description: hexagramInfo.description),
+            currentLocation: "北京市",
+            onDismiss: {}
         )
     }
 }

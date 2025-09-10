@@ -798,7 +798,12 @@ struct CoinTossView: View {
                         NavigationLink(destination: DivinationResultPageView(
                             question: question,
                             tossResults: tossResults,
-                            hexagramData: hexagramData
+                            hexagramData: hexagramData,
+                            currentLocation: locationManager.currentCity,
+                            onDismiss: {
+                                // 在ContentView的CoinTossView中，通过onDismissToHome回调返回首页
+                                onDismissToHome()
+                            }
                         )) {
                             HStack {
                                 Image(systemName: "eye.fill")

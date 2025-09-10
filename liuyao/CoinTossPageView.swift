@@ -340,7 +340,18 @@ struct CoinTossPageView: View {
                         DivinationResultPageView(
                             question: question,
                             tossResults: tossResults,
-                            hexagramData: hexagramData
+                            hexagramData: hexagramData,
+                            currentLocation: locationManager.currentCity,
+                            onDismiss: {
+                                print("[CoinTossPageView] 解卦结果页面请求关闭")
+                                showResultPage = false
+                                
+                                // 延迟一点后返回到根视图
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                    dismiss()
+                                    print("[CoinTossPageView] 已返回到根视图")
+                                }
+                            }
                         )
                     }
                 }
