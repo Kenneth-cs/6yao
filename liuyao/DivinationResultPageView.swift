@@ -6,6 +6,9 @@ struct DivinationResultPageView: View {
     let tossResults: [Bool]
     let hexagramData: (name: String, description: String)
     @State private var aiInterpretation: String = ""
+    @State private var hexagramAnalysis: String = ""
+    @State private var questionInterpretation: String = ""
+    @State private var guidanceAdvice: String = ""
     @State private var isLoading = true
     @State private var showSaveAlert = false
     @State private var divinationTime: Date = Date() // 静态起卦时间
@@ -14,18 +17,31 @@ struct DivinationResultPageView: View {
     @State private var networkMonitor = NWPathMonitor()
     @State private var isNetworkAvailable = true
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
                 // 顶部信息区域
                 VStack(spacing: 20) {
-                    // 完成按钮
+                    // 标题和完成按钮
                     HStack {
+                        Text("解卦结果")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundStyle(
+                                LinearGradient(
+                                    gradient: Gradient(colors: [.purple, .indigo]),
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                        
                         Spacer()
+                        
                         Button(action: {
-                            // 回到首页 - 通过dismiss回到根视图
-                            dismiss()
+                            // 回到首页 - 关闭全屏视图，返回到根视图
+                            presentationMode.wrappedValue.dismiss()
                         }) {
                             Text("完成")
                                 .font(.headline)
@@ -187,8 +203,9 @@ struct DivinationResultPageView: View {
                     .padding(.horizontal, 20)
                 }
                 .background(Color.white)
+                .padding(.bottom, 30)
                 
-                // AI解读区域
+                // AI解读内容区域
                 if isLoading {
                     VStack(spacing: 16) {
                         HStack {
@@ -229,82 +246,173 @@ struct DivinationResultPageView: View {
                     .padding(.vertical, 60)
                     .background(Color(.systemBackground))
                 } else {
-                    VStack(spacing: 0) {
-                        // AI解读结果 - 简化显示
-                        VStack(alignment: .leading, spacing: 16) {
-                            HStack {
-                                Image(systemName: "sparkles")
-                                    .foregroundColor(.blue)
-                                    .font(.title3)
-                                Text("AI解读")
-                                    .font(.title3)
-                                    .fontWeight(.bold)
-                                    .foregroundColor(.blue)
-                                Spacer()
-                            }
-                            
-                            if aiInterpretation.contains("解读失败") || aiInterpretation.contains("超时") || aiInterpretation.contains("网络") {
-                                // 错误状态显示
-                                VStack(spacing: 12) {
-                                    Image(systemName: "wifi.exclamationmark")
-                                        .font(.title2)
-                                        .foregroundColor(.orange)
-                                    
-                                    Text("网络请求超时")
-                                        .font(.headline)
-                                        .foregroundColor(.primary)
-                                    
-                                    Text("请检查网络连接，或稍后重试")
-                                        .font(.body)
-                                        .foregroundColor(.secondary)
-                                        .multilineTextAlignment(.center)
-                                    
-                                    Button("重新解读") {
-                                        isLoading = true
-                                        aiInterpretation = ""
-                                        // 延迟一点重新请求
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                            requestAIInterpretation()
-                                        }
-                                    }
-                                    .font(.body)
-                                    .foregroundColor(.white)
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 8)
-                                    .background(
-                                        LinearGradient(
-                                            gradient: Gradient(colors: [.purple, .indigo]),
-                                            startPoint: .leading,
-                                            endPoint: .trailing
-                                        )
-                                    )
-                                    .cornerRadius(20)
-                                }
-                                .padding(.vertical, 20)
-                            } else {
-                                // 正常解读结果显示
-                                Text(aiInterpretation)
-                                    .font(.body)
+                    VStack(spacing: 20) {
+                        // 检查是否有错误状态
+                        if aiInterpretation.contains("解读失败") || aiInterpretation.contains("超时") || aiInterpretation.contains("网络") {
+                            // 错误状态显示
+                            VStack(spacing: 12) {
+                                Image(systemName: "wifi.exclamationmark")
+                                    .font(.title2)
+                                    .foregroundColor(.orange)
+                                
+                                Text("网络请求超时")
+                                    .font(.headline)
                                     .foregroundColor(.primary)
-                                    .lineSpacing(4)
-                                    .multilineTextAlignment(.leading)
-                            }
-                        }
-                        .padding(20)
-                        .background(
-                            RoundedRectangle(cornerRadius: 16)
-                                .fill(
+                                
+                                Text("请检查网络连接，或稍后重试")
+                                    .font(.body)
+                                    .foregroundColor(.secondary)
+                                    .multilineTextAlignment(.center)
+                                
+                                Button("重新解读") {
+                                    isLoading = true
+                                    aiInterpretation = ""
+                                    hexagramAnalysis = ""
+                                    questionInterpretation = ""
+                                    guidanceAdvice = ""
+                                    // 延迟一点重新请求
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                        requestAIInterpretation()
+                                    }
+                                }
+                                .font(.body)
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 8)
+                                .background(
                                     LinearGradient(
-                                        gradient: Gradient(colors: [.blue.opacity(0.05), .cyan.opacity(0.03)]),
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
+                                        gradient: Gradient(colors: [.purple, .indigo]),
+                                        startPoint: .leading,
+                                        endPoint: .trailing
                                     )
                                 )
-                        )
-                        .padding(.horizontal, 20)
-                        .padding(.top, 20)
-                        .padding(.bottom, 30)
+                                .cornerRadius(20)
+                            }
+                            .padding(.vertical, 20)
+                            .padding(.horizontal, 20)
+                        } else {
+                            // 卦象解析板块
+                            VStack(alignment: .leading, spacing: 16) {
+                                HStack {
+                                    Image(systemName: "chart.line.uptrend.xyaxis")
+                                        .foregroundColor(.blue)
+                                        .font(.title2)
+                                    Text("卦象解析")
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.blue)
+                                    Spacer()
+                                }
+                                
+                                if !hexagramAnalysis.isEmpty {
+                                    Text(hexagramAnalysis)
+                                        .font(.body)
+                                        .foregroundColor(.primary)
+                                        .lineSpacing(6)
+                                        .multilineTextAlignment(.leading)
+                                } else {
+                                    Text("正在解析卦象含义...")
+                                        .font(.body)
+                                        .foregroundColor(.secondary)
+                                        .italic()
+                                }
+                            }
+                            .padding(20)
+                            .background(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(
+                                        LinearGradient(
+                                            gradient: Gradient(colors: [.blue.opacity(0.08), .cyan.opacity(0.05)]),
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
+                            )
+                            .padding(.horizontal, 20)
+                            
+                            // 问题解读板块
+                            VStack(alignment: .leading, spacing: 16) {
+                                HStack {
+                                    Image(systemName: "questionmark.circle.fill")
+                                        .foregroundColor(.green)
+                                        .font(.title2)
+                                    Text("问题解读")
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.green)
+                                    Spacer()
+                                }
+                                
+                                if !questionInterpretation.isEmpty {
+                                    Text(questionInterpretation)
+                                        .font(.body)
+                                        .foregroundColor(.primary)
+                                        .lineSpacing(6)
+                                        .multilineTextAlignment(.leading)
+                                } else {
+                                    Text("正在解读问题...")
+                                        .font(.body)
+                                        .foregroundColor(.secondary)
+                                        .italic()
+                                }
+                            }
+                            .padding(20)
+                            .background(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(
+                                        LinearGradient(
+                                            gradient: Gradient(colors: [.green.opacity(0.08), .mint.opacity(0.05)]),
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
+                            )
+                            .padding(.horizontal, 20)
+                            
+                            // 建议指导板块
+                            VStack(alignment: .leading, spacing: 16) {
+                                HStack {
+                                    Image(systemName: "lightbulb.fill")
+                                        .foregroundColor(.orange)
+                                        .font(.title2)
+                                    Text("建议指导")
+                                        .font(.title2)
+                                        .fontWeight(.bold)
+                                        .foregroundColor(.orange)
+                                    Spacer()
+                                }
+                                
+                                if !guidanceAdvice.isEmpty {
+                                    Text(guidanceAdvice)
+                                        .font(.body)
+                                        .foregroundColor(.primary)
+                                        .lineSpacing(6)
+                                        .multilineTextAlignment(.leading)
+                                } else {
+                                    Text("正在生成建议指导...")
+                                        .font(.body)
+                                        .foregroundColor(.secondary)
+                                        .italic()
+                                }
+                            }
+                            .padding(20)
+                            .background(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(
+                                        LinearGradient(
+                                            gradient: Gradient(colors: [.orange.opacity(0.08), .yellow.opacity(0.05)]),
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
+                            )
+                            .padding(.horizontal, 20)
+                        }
                     }
+                    .padding(.bottom, 30)
                     .background(Color(.systemBackground))
                 }
                 
@@ -332,7 +440,7 @@ struct DivinationResultPageView: View {
                             
                             // 重新问卦按钮
                             Button(action: {
-                                dismiss()
+                                presentationMode.wrappedValue.dismiss()
                             }) {
                                 Text("重新问卦")
                                     .font(.body)
@@ -413,6 +521,7 @@ struct DivinationResultPageView: View {
                 
                 await MainActor.run {
                     self.aiInterpretation = interpretation
+                    self.parseAIInterpretation(interpretation)
                     self.isLoading = false
                     print("[DivinationResultPageView] UI更新完成")
                 }
@@ -451,6 +560,71 @@ struct DivinationResultPageView: View {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         return formatter.string(from: date)
+    }
+    
+    private func parseAIInterpretation(_ interpretation: String) {
+        // 根据关键词分割内容到三个板块
+        let lines = interpretation.components(separatedBy: .newlines)
+        var hexagramContent = ""
+        var questionContent = ""
+        var guidanceContent = ""
+        var currentSection = "hexagram" // 默认开始是卦象解析
+        
+        for line in lines {
+            let trimmedLine = line.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            // 检查是否是问题解读的开始
+            if trimmedLine.contains("问题解读") || trimmedLine.contains("问题分析") || trimmedLine.contains("你的问题") || trimmedLine.contains("问题含义") {
+                currentSection = "question"
+                continue
+            }
+            // 检查是否是建议指导的开始
+            else if trimmedLine.contains("建议指导") || trimmedLine.contains("指导建议") || trimmedLine.contains("建议") || trimmedLine.contains("指导") {
+                currentSection = "guidance"
+                continue
+            }
+            // 检查是否是卦象解析的开始
+            else if trimmedLine.contains("卦象解析") || trimmedLine.contains("卦象含义") || trimmedLine.contains("核心含义") {
+                currentSection = "hexagram"
+                continue
+            }
+            
+            // 根据当前部分添加内容
+            if currentSection == "hexagram" && !trimmedLine.isEmpty {
+                if !hexagramContent.isEmpty {
+                    hexagramContent += "\n"
+                }
+                hexagramContent += trimmedLine
+            } else if currentSection == "question" && !trimmedLine.isEmpty {
+                if !questionContent.isEmpty {
+                    questionContent += "\n"
+                }
+                questionContent += trimmedLine
+            } else if currentSection == "guidance" && !trimmedLine.isEmpty {
+                if !guidanceContent.isEmpty {
+                    guidanceContent += "\n"
+                }
+                guidanceContent += trimmedLine
+            }
+        }
+        
+        // 如果没有找到明确的分割，按长度分割成三部分
+        if hexagramContent.isEmpty && questionContent.isEmpty && guidanceContent.isEmpty {
+            let totalLength = interpretation.count
+            let firstThird = totalLength / 3
+            let secondThird = firstThird * 2
+            
+            hexagramContent = String(interpretation.prefix(firstThird))
+            questionContent = String(interpretation.dropFirst(firstThird).prefix(firstThird))
+            guidanceContent = String(interpretation.suffix(totalLength - secondThird))
+        }
+        
+        // 更新状态
+        DispatchQueue.main.async {
+            self.hexagramAnalysis = hexagramContent.isEmpty ? "暂无卦象解析" : hexagramContent
+            self.questionInterpretation = questionContent.isEmpty ? "暂无问题解读" : questionContent
+            self.guidanceAdvice = guidanceContent.isEmpty ? "暂无建议指导" : guidanceContent
+        }
     }
     
     private func startNetworkMonitoring() {
