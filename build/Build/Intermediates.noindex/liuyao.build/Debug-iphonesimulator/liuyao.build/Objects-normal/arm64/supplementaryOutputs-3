@@ -1,0 +1,18 @@
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/DataModels.swift":
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DataModels.o"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DataModels.swiftdeps"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DataModels.dia"
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DataModels.swiftconstvalues"
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DataModels.d"
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/DivinationResultPageView.swift":
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationResultPageView.swiftconstvalues"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationResultPageView.o"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationResultPageView.swiftdeps"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationResultPageView.dia"
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationResultPageView.d"
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/DivinationPageView.swift":
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationPageView.swiftdeps"
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationPageView.d"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationPageView.o"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationPageView.dia"
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationPageView.swiftconstvalues"

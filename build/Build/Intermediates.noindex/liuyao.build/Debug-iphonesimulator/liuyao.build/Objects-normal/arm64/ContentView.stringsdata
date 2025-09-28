@@ -1,0 +1,480 @@
+{
+  "source": "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "人生教练",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 87
+        }
+      },
+      {
+        "comment": "",
+        "key": "看见自己、理解当下、顺势而为",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 133
+        }
+      },
+      {
+        "comment": "",
+        "key": "起卦时辰",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 104
+        }
+      },
+      {
+        "comment": "",
+        "key": "(时间节点影响卦象解读)",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 108
+        }
+      },
+      {
+        "comment": "",
+        "key": "遇事不决 摇一摇",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 224
+        }
+      },
+      {
+        "comment": "",
+        "key": "点击开始问卦",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 229
+        }
+      },
+      {
+        "comment": "",
+        "key": "乾",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 199
+        }
+      },
+      {
+        "comment": "",
+        "key": "坤",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 203
+        }
+      },
+      {
+        "comment": "",
+        "key": "坎",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 210
+        }
+      },
+      {
+        "comment": "",
+        "key": "离",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 214
+        }
+      },
+      {
+        "comment": "",
+        "key": "或者问问其他的...",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 256
+        }
+      },
+      {
+        "comment": "",
+        "key": "今日启示",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 348
+        }
+      },
+      {
+        "comment": "",
+        "key": "问卦",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 504
+        }
+      },
+      {
+        "comment": "",
+        "key": "心有所问，卦有所答",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 427
+        }
+      },
+      {
+        "comment": "",
+        "key": "请输入你想要咨询的问题",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 438
+        }
+      },
+      {
+        "comment": "",
+        "key": "你的问题",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 446
+        }
+      },
+      {
+        "comment": "",
+        "key": "例如：我和他之间还有未来吗？",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 450
+        }
+      },
+      {
+        "comment": "",
+        "key": "开始摇卦",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 466
+        }
+      },
+      {
+        "comment": "",
+        "key": "💡 提示",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 491
+        }
+      },
+      {
+        "comment": "",
+        "key": "问题越具体，解卦越准确\n建议以疑问句的形式提问",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 496
+        }
+      },
+      {
+        "comment": "",
+        "key": "取消",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 509
+        }
+      },
+      {
+        "comment": "",
+        "key": "正在为您解答",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 628
+        }
+      },
+      {
+        "comment": "",
+        "key": "准备开始占卜",
+        "location": {
+          "startingColumn": 66,
+          "startingLine": 628
+        }
+      },
+      {
+        "comment": "",
+        "key": "第 %lld 次抛掷",
+        "location": {
+          "startingColumn": 48,
+          "startingLine": 643
+        }
+      },
+      {
+        "comment": "",
+        "key": "抛掷完成",
+        "location": {
+          "startingColumn": 95,
+          "startingLine": 643
+        }
+      },
+      {
+        "comment": "",
+        "key": "☰",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 742
+        }
+      },
+      {
+        "comment": "",
+        "key": "☷",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 746
+        }
+      },
+      {
+        "comment": "",
+        "key": "☵",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 753
+        }
+      },
+      {
+        "comment": "",
+        "key": "☲",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 757
+        }
+      },
+      {
+        "comment": "",
+        "key": "开始占卜",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 781
+        }
+      },
+      {
+        "comment": "",
+        "key": "将自动生成6次抛掷结果",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 809
+        }
+      },
+      {
+        "comment": "",
+        "key": "或摇动手机开始",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 804
+        }
+      },
+      {
+        "comment": "",
+        "key": "抛掷结果",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 819
+        }
+      },
+      {
+        "comment": "",
+        "key": "阳",
+        "location": {
+          "startingColumn": 63,
+          "startingLine": 825
+        }
+      },
+      {
+        "comment": "",
+        "key": "阴",
+        "location": {
+          "startingColumn": 71,
+          "startingLine": 825
+        }
+      },
+      {
+        "comment": "",
+        "key": "查看卦象解读",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 864
+        }
+      },
+      {
+        "comment": "",
+        "key": "解卦结果",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 1454
+        }
+      },
+      {
+        "comment": "",
+        "key": "您的问题",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 978
+        }
+      },
+      {
+        "comment": "",
+        "key": "起卦信息",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 997
+        }
+      },
+      {
+        "comment": "",
+        "key": "卦名",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 1009
+        }
+      },
+      {
+        "comment": "",
+        "key": "卦象",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 1025
+        }
+      },
+      {
+        "comment": "",
+        "key": "起卦时间",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 1052
+        }
+      },
+      {
+        "comment": "",
+        "key": "起卦地点",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 1073
+        }
+      },
+      {
+        "comment": "",
+        "key": "卦象",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 1099
+        }
+      },
+      {
+        "comment": "",
+        "key": "阳",
+        "location": {
+          "startingColumn": 65,
+          "startingLine": 1157
+        }
+      },
+      {
+        "comment": "",
+        "key": "阴",
+        "location": {
+          "startingColumn": 73,
+          "startingLine": 1157
+        }
+      },
+      {
+        "comment": "",
+        "key": "卦象分析",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 1197
+        }
+      },
+      {
+        "comment": "",
+        "key": "●",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 1203
+        }
+      },
+      {
+        "comment": "",
+        "key": "取消解读",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 1245
+        }
+      },
+      {
+        "comment": "",
+        "key": "AI正在解读卦象...",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 1234
+        }
+      },
+      {
+        "comment": "",
+        "key": "预计需要10-30秒",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 1238
+        }
+      },
+      {
+        "comment": "",
+        "key": "解读失败",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 1271
+        }
+      },
+      {
+        "comment": "",
+        "key": "重新解读",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 1280
+        }
+      },
+      {
+        "comment": "",
+        "key": "卦象分析",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 1320
+        }
+      },
+      {
+        "comment": "",
+        "key": "建议指导",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 1366
+        }
+      },
+      {
+        "comment": "",
+        "key": "已保存",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 1410
+        }
+      },
+      {
+        "comment": "",
+        "key": "保存记录",
+        "location": {
+          "startingColumn": 56,
+          "startingLine": 1410
+        }
+      },
+      {
+        "comment": "",
+        "key": "重新问卦",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 1432
+        }
+      },
+      {
+        "comment": "",
+        "key": "完成",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 1458
+        }
+      }
+    ]
+  },
+  "version": 1
+}

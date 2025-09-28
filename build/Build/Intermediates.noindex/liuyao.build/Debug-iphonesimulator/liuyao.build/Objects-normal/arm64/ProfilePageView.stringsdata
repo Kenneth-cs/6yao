@@ -1,0 +1,312 @@
+{
+  "source": "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/ProfilePageView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "个人中心",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 34
+        }
+      },
+      {
+        "comment": "",
+        "key": "人生用户",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 86
+        }
+      },
+      {
+        "comment": "",
+        "key": "探索人生的智慧",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 91
+        }
+      },
+      {
+        "comment": "",
+        "key": "统计面板",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 116
+        }
+      },
+      {
+        "comment": "",
+        "key": "常问类型",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 172
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld次 (%lld%%)",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 409
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 519
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld%%",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 524
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 550
+        }
+      },
+      {
+        "comment": "",
+        "key": "个人设置",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 603
+        }
+      },
+      {
+        "comment": "",
+        "key": "应用管理",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 652
+        }
+      },
+      {
+        "comment": "",
+        "key": "缓存清理",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 878
+        }
+      },
+      {
+        "comment": "",
+        "key": "关闭",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 880
+        }
+      },
+      {
+        "comment": "",
+        "key": "缓存清理",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 755
+        }
+      },
+      {
+        "comment": "",
+        "key": "清理内容包括：",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 766
+        }
+      },
+      {
+        "comment": "",
+        "key": "正在清理中...",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 785
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld%%",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 793
+        }
+      },
+      {
+        "comment": "",
+        "key": "清理完成！",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 816
+        }
+      },
+      {
+        "comment": "",
+        "key": "已清理 %@ 缓存文件",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 821
+        }
+      },
+      {
+        "comment": "",
+        "key": "开始清理",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 843
+        }
+      },
+      {
+        "comment": "",
+        "key": "完成",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 864
+        }
+      },
+      {
+        "comment": "",
+        "key": "取消",
+        "location": {
+          "startingColumn": 57,
+          "startingLine": 864
+        }
+      },
+      {
+        "comment": "",
+        "key": "数据备份",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 1031
+        }
+      },
+      {
+        "comment": "",
+        "key": "关闭",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 1033
+        }
+      },
+      {
+        "comment": "",
+        "key": "数据备份",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 967
+        }
+      },
+      {
+        "comment": "",
+        "key": "正在开发中",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 972
+        }
+      },
+      {
+        "comment": "",
+        "key": "我们正在为您开发更完善的的数据备份功能\n敬请期待后续版本更新",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 977
+        }
+      },
+      {
+        "comment": "",
+        "key": "即将支持的功能：",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 986
+        }
+      },
+      {
+        "comment": "",
+        "key": "我知道了",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 1012
+        }
+      },
+      {
+        "comment": "",
+        "key": "隐私设置",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 1209
+        }
+      },
+      {
+        "comment": "",
+        "key": "关闭",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 1212
+        }
+      },
+      {
+        "comment": "",
+        "key": "保存",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 1215
+        }
+      },
+      {
+        "comment": "",
+        "key": "隐私设置",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 1100
+        }
+      },
+      {
+        "comment": "",
+        "key": "管理您的数据隐私和使用偏好",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 1105
+        }
+      },
+      {
+        "comment": "",
+        "key": "了解更多",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 1182
+        }
+      },
+      {
+        "comment": "",
+        "key": "隐私政策",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 1188
+        }
+      },
+      {
+        "comment": "",
+        "key": "用户协议",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 1194
+        }
+      },
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 1283
+        }
+      }
+    ]
+  },
+  "version": 1
+}

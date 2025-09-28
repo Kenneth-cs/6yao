@@ -1,0 +1,64 @@
+{
+  "source": "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/LearningView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "学习中心",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 73
+        }
+      },
+      {
+        "comment": "",
+        "key": "完成",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 77
+        }
+      },
+      {
+        "comment": "",
+        "key": "搜索学习内容...",
+        "location": {
+          "startingColumn": 23,
+          "startingLine": 98
+        }
+      },
+      {
+        "comment": "",
+        "key": "返回",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 187
+        }
+      },
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 332
+        }
+      },
+      {
+        "comment": "",
+        "key": "相关标签",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 313
+        }
+      },
+      {
+        "comment": "",
+        "key": "完成",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 336
+        }
+      }
+    ]
+  },
+  "version": 1
+}

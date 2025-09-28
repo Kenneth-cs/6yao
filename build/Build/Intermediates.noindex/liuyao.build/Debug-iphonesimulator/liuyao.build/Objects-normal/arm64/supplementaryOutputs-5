@@ -1,0 +1,18 @@
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/liuyaoApp.swift":
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/liuyaoApp.o"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/liuyaoApp.swiftdeps"
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/liuyaoApp.d"
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/liuyaoApp.swiftconstvalues"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/liuyaoApp.dia"
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/LearningView.swift":
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningView.swiftconstvalues"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningView.dia"
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningView.d"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningView.swiftdeps"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningView.o"
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/LocationManager.swift":
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LocationManager.d"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LocationManager.o"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LocationManager.swiftdeps"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LocationManager.dia"
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LocationManager.swiftconstvalues"

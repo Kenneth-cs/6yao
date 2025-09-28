@@ -295,13 +295,67 @@ struct ContentView: View {
                         NavigationLink(destination: HistoryPageView()) {
                             NavigationButtonContent(icon: "clock.fill", title: "历史")
                         }
-                        Button(action: {}) {
+                        NavigationLink(destination: ProfilePageView()) {
                             NavigationButtonContent(icon: "person.fill", title: "我的")
                         }
                     }
                     .padding(.bottom, 30)
                 }
                 .padding(.horizontal, 20)
+                
+                // 右下角悬浮按钮
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        NavigationLink(destination: DailyInspirationView()) {
+                            ZStack {
+                                // 外圈光晕
+                                Circle()
+                                    .fill(
+                                        RadialGradient(
+                                            gradient: Gradient(colors: [
+                                                Color.orange.opacity(0.3),
+                                                Color.yellow.opacity(0.1)
+                                            ]),
+                                            center: .center,
+                                            startRadius: 10,
+                                            endRadius: 30
+                                        )
+                                    )
+                                    .frame(width: 70, height: 70)
+                                
+                                // 主按钮
+                                Circle()
+                                    .fill(
+                                        LinearGradient(
+                                            gradient: Gradient(colors: [
+                                                Color.orange.opacity(0.9),
+                                                Color.yellow.opacity(0.8)
+                                            ]),
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
+                                    .frame(width: 56, height: 56)
+                                    .shadow(color: .orange.opacity(0.4), radius: 8, x: 2, y: 4)
+                                
+                                // 图标
+                                VStack(spacing: 2) {
+                                    Image(systemName: "sun.max.fill")
+                                        .font(.system(size: 16, weight: .bold))
+                                        .foregroundColor(.white)
+                                    Text("今日启示")
+                                        .font(.system(size: 8, weight: .bold))
+                                        .foregroundColor(.white)
+                                }
+                            }
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        .padding(.trailing, 20)
+                        .padding(.bottom, 100)
+                    }
+                }
             }
             .navigationBarHidden(true)
         }

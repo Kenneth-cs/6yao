@@ -1,0 +1,16 @@
+{
+  "source": "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/LearningPageView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "学习中心",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 30
+        }
+      }
+    ]
+  },
+  "version": 1
+}

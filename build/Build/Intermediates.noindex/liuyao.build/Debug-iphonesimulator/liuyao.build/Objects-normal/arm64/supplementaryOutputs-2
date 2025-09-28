@@ -1,0 +1,18 @@
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/ContentView.swift":
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ContentView.swiftconstvalues"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ContentView.o"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ContentView.swiftdeps"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ContentView.dia"
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ContentView.d"
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/DailyInspirationView.swift":
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DailyInspirationView.dia"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DailyInspirationView.o"
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DailyInspirationView.d"
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DailyInspirationView.swiftconstvalues"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DailyInspirationView.swiftdeps"
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/CoinTossPageView.swift":
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/CoinTossPageView.d"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/CoinTossPageView.o"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/CoinTossPageView.swiftdeps"
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/CoinTossPageView.swiftconstvalues"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/CoinTossPageView.dia"

@@ -6,7 +6,15 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="question" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="tossResultsData" optional="YES" attributeType="Binary"/>
+        <relationship name="feedback" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="FeedbackRecord" inverseName="divination" inverseEntity="FeedbackRecord"/>
     </entity>
-    <entity name="Entity1" representedClassName="Entity1" syncable="YES" codeGenerationType="class"/>
+    <entity name="FeedbackRecord" representedClassName="FeedbackRecord" syncable="YES" codeGenerationType="class">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="feedback" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="divination" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DivinationRecord" inverseName="feedback" inverseEntity="DivinationRecord"/>
+    </entity>
 </model>

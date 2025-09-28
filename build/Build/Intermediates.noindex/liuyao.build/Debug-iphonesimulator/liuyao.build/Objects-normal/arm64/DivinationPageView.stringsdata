@@ -1,0 +1,72 @@
+{
+  "source": "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/DivinationPageView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "问卦",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 115
+        }
+      },
+      {
+        "comment": "",
+        "key": "心有所问，卦有所答",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 36
+        }
+      },
+      {
+        "comment": "",
+        "key": "请输入你想要咨询的问题",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 47
+        }
+      },
+      {
+        "comment": "",
+        "key": "你的问题",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 55
+        }
+      },
+      {
+        "comment": "",
+        "key": "例如：我和他之间还有未来吗？",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 59
+        }
+      },
+      {
+        "comment": "",
+        "key": "开始摇卦",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 74
+        }
+      },
+      {
+        "comment": "",
+        "key": "💡 提示",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 102
+        }
+      },
+      {
+        "comment": "",
+        "key": "问题越具体，解卦越准确\n建议以疑问句的形式提问",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 107
+        }
+      }
+    ]
+  },
+  "version": 1
+}

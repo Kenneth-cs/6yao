@@ -74,6 +74,32 @@ extension DivinationRecord {
     var hexagramDisplay: String {
         return tossResults.map { $0 ? "阳" : "阴" }.joined(separator: " ")
     }
+    
+    // 获取准确度评分
+    var accuracyRating: Int {
+        return Int(feedback?.rating ?? 0)
+    }
+    
+    // 是否有反馈
+    var hasFeedback: Bool {
+        return feedback != nil
+    }
+}
+
+// MARK: - FeedbackRecord Extensions
+extension FeedbackRecord {
+    var formattedDate: String {
+        guard let date = createdAt else { return "" }
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        formatter.locale = Locale(identifier: "zh_CN")
+        return formatter.string(from: date)
+    }
+    
+    var ratingStars: String {
+        return String(repeating: "⭐", count: Int(rating))
+    }
 }
 
 // 删除 Identifiable 扩展，因为自动生成的代码已经包含了
@@ -105,6 +131,44 @@ class DataService: ObservableObject {
             print("问卦记录保存成功")
         } catch {
             print("保存失败: \(error)")
+        }
+    }
+    
+    func saveFeedback(
+        for divinationRecord: DivinationRecord,
+        rating: Int,
+        feedback: String?
+    ) {
+        let feedbackRecord = FeedbackRecord(context: viewContext)
+        feedbackRecord.id = UUID()
+        feedbackRecord.rating = Int16(rating)
+        feedbackRecord.feedback = feedback
+        feedbackRecord.createdAt = Date()
+        feedbackRecord.divination = divinationRecord
+        
+        do {
+            try viewContext.save()
+            print("反馈保存成功")
+        } catch {
+            print("反馈保存失败: \(error)")
+        }
+    }
+    
+    func saveFeedback(
+        for divinationId: UUID,
+        rating: Int,
+        feedback: String?
+    ) {
+        let request: NSFetchRequest<DivinationRecord> = DivinationRecord.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", divinationId as CVarArg)
+        
+        do {
+            let records = try viewContext.fetch(request)
+            if let record = records.first {
+                saveFeedback(for: record, rating: rating, feedback: feedback)
+            }
+        } catch {
+            print("查找问卦记录失败: \(error)")
         }
     }
     

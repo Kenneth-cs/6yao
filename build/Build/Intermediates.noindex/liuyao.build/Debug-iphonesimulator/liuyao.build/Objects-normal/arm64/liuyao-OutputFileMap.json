@@ -1,0 +1,258 @@
+{
+  "" : {
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/liuyao-master.dia",
+    "emit-module-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/liuyao-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/liuyao-master-emit-module.dia",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/liuyao-master.swiftdeps"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/DerivedSources/CoreDataGenerated/DivinationModel/DivinationModel+CoreDataModel.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationModel+CoreDataModel.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationModel+CoreDataModel.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationModel+CoreDataModel.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationModel+CoreDataModel.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationModel+CoreDataModel.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationModel+CoreDataModel.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationModel+CoreDataModel.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationModel+CoreDataModel~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/DerivedSources/CoreDataGenerated/DivinationModel/DivinationRecord+CoreDataClass.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationRecord+CoreDataClass.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationRecord+CoreDataClass.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationRecord+CoreDataClass.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationRecord+CoreDataClass.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationRecord+CoreDataClass.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationRecord+CoreDataClass.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationRecord+CoreDataClass.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationRecord+CoreDataClass~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/DerivedSources/CoreDataGenerated/DivinationModel/DivinationRecord+CoreDataProperties.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationRecord+CoreDataProperties.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationRecord+CoreDataProperties.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationRecord+CoreDataProperties.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationRecord+CoreDataProperties.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationRecord+CoreDataProperties.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationRecord+CoreDataProperties.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationRecord+CoreDataProperties.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationRecord+CoreDataProperties~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/DerivedSources/CoreDataGenerated/DivinationModel/FeedbackRecord+CoreDataClass.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/FeedbackRecord+CoreDataClass.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/FeedbackRecord+CoreDataClass.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/FeedbackRecord+CoreDataClass.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/FeedbackRecord+CoreDataClass.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/FeedbackRecord+CoreDataClass.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/FeedbackRecord+CoreDataClass.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/FeedbackRecord+CoreDataClass.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/FeedbackRecord+CoreDataClass~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/DerivedSources/CoreDataGenerated/DivinationModel/FeedbackRecord+CoreDataProperties.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/FeedbackRecord+CoreDataProperties.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/FeedbackRecord+CoreDataProperties.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/FeedbackRecord+CoreDataProperties.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/FeedbackRecord+CoreDataProperties.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/FeedbackRecord+CoreDataProperties.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/FeedbackRecord+CoreDataProperties.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/FeedbackRecord+CoreDataProperties.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/FeedbackRecord+CoreDataProperties~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/AccuracyFeedbackView.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AccuracyFeedbackView.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AccuracyFeedbackView.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AccuracyFeedbackView.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AccuracyFeedbackView.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AccuracyFeedbackView.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AccuracyFeedbackView.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AccuracyFeedbackView.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AccuracyFeedbackView~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/AIModels.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIModels.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIModels.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIModels.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIModels.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIModels.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIModels.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIModels.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIModels~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/AIService.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIService.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIService.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIService.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIService.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIService.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIService.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIService.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIService~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/CoinTossPageView.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/CoinTossPageView.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/CoinTossPageView.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/CoinTossPageView.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/CoinTossPageView.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/CoinTossPageView.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/CoinTossPageView.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/CoinTossPageView.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/CoinTossPageView~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/ContentView.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ContentView.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ContentView.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ContentView.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ContentView.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ContentView.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ContentView~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/DailyInspirationView.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DailyInspirationView.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DailyInspirationView.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DailyInspirationView.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DailyInspirationView.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DailyInspirationView.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DailyInspirationView.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DailyInspirationView.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DailyInspirationView~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/DataModels.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DataModels.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DataModels.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DataModels.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DataModels.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DataModels.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DataModels.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DataModels.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DataModels~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/DivinationPageView.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationPageView.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationPageView.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationPageView.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationPageView.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationPageView.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationPageView.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationPageView.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationPageView~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/DivinationResultPageView.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationResultPageView.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationResultPageView.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationResultPageView.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationResultPageView.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationResultPageView.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationResultPageView.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationResultPageView.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/DivinationResultPageView~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/HistoryPageView.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/HistoryPageView.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/HistoryPageView.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/HistoryPageView.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/HistoryPageView.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/HistoryPageView.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/HistoryPageView.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/HistoryPageView.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/HistoryPageView~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/HistoryView.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/HistoryView.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/HistoryView.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/HistoryView.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/HistoryView.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/HistoryView.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/HistoryView.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/HistoryView.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/HistoryView~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/LearningPageView.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningPageView.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningPageView.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningPageView.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningPageView.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningPageView.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningPageView.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningPageView.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningPageView~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/LearningView.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningView.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningView.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningView.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningView.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningView.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningView.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningView.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LearningView~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/liuyaoApp.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/liuyaoApp.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/liuyaoApp.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/liuyaoApp.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/liuyaoApp.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/liuyaoApp.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/liuyaoApp.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/liuyaoApp.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/liuyaoApp~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/LocationManager.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LocationManager.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LocationManager.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LocationManager.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LocationManager.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LocationManager.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LocationManager.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LocationManager.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/LocationManager~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/NetworkService.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/NetworkService.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/NetworkService.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/NetworkService.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/NetworkService.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/NetworkService.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/NetworkService.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/NetworkService.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/NetworkService~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/ProfilePageView.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ProfilePageView.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ProfilePageView.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ProfilePageView.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ProfilePageView.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ProfilePageView.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ProfilePageView.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ProfilePageView.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/ProfilePageView~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/SharedComponents.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/SharedComponents.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/SharedComponents.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/SharedComponents.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/SharedComponents.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/SharedComponents.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/SharedComponents.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/SharedComponents.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/SharedComponents~partial.swiftmodule"
+  },
+  "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/StatisticsService.swift" : {
+    "const-values" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/StatisticsService.swiftconstvalues",
+    "dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/StatisticsService.d",
+    "diagnostics" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/StatisticsService.dia",
+    "index-unit-output-path" : "/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/StatisticsService.o",
+    "llvm-bc" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/StatisticsService.bc",
+    "object" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/StatisticsService.o",
+    "swift-dependencies" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/StatisticsService.swiftdeps",
+    "swiftmodule" : "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/StatisticsService~partial.swiftmodule"
+  }
+}

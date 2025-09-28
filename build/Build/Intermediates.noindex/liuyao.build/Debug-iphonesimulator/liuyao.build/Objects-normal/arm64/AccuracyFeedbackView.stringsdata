@@ -1,0 +1,152 @@
+{
+  "source": "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/AccuracyFeedbackView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "反馈已更新！",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 173
+        }
+      },
+      {
+        "comment": "",
+        "key": "感谢您的反馈！",
+        "location": {
+          "startingColumn": 51,
+          "startingLine": 173
+        }
+      },
+      {
+        "comment": "",
+        "key": "反馈",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 161
+        }
+      },
+      {
+        "comment": "",
+        "key": "修改反馈",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 37
+        }
+      },
+      {
+        "comment": "",
+        "key": "准确度反馈",
+        "location": {
+          "startingColumn": 55,
+          "startingLine": 37
+        }
+      },
+      {
+        "comment": "",
+        "key": "修改您之前的反馈内容",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 42
+        }
+      },
+      {
+        "comment": "",
+        "key": "您的反馈有助于我们改进解卦质量",
+        "location": {
+          "startingColumn": 73,
+          "startingLine": 42
+        }
+      },
+      {
+        "comment": "",
+        "key": "请为本次解卦的准确度打分",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 51
+        }
+      },
+      {
+        "comment": "",
+        "key": "详细反馈（可选）",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 90
+        }
+      },
+      {
+        "comment": "",
+        "key": "请分享您的想法，比如哪些方面比较准确，哪些需要改进...",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "跳过",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 152
+        }
+      },
+      {
+        "comment": "",
+        "key": "更新反馈",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 131
+        }
+      },
+      {
+        "comment": "",
+        "key": "提交反馈",
+        "location": {
+          "startingColumn": 63,
+          "startingLine": 131
+        }
+      },
+      {
+        "comment": "",
+        "key": "取消",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 166
+        }
+      },
+      {
+        "comment": "",
+        "key": "确定",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 174
+        }
+      },
+      {
+        "comment": "",
+        "key": "您的反馈已成功更新。",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 178
+        }
+      },
+      {
+        "comment": "",
+        "key": "您的反馈对我们很重要，将帮助我们提供更准确的解卦服务。",
+        "location": {
+          "startingColumn": 65,
+          "startingLine": 178
+        }
+      },
+      {
+        "comment": "",
+        "key": "评价准确度",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 237
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -134,57 +134,70 @@ struct HistoryRecordCard: View {
     let onTap: () -> Void
     
     var body: some View {
-        Button(action: onTap) {
-            VStack(alignment: .leading, spacing: 12) {
-                // 问题
-                HStack {
-                    Image(systemName: "questionmark.circle.fill")
-                        .foregroundColor(.purple)
-                        .font(.title3)
+        VStack(alignment: .leading, spacing: 12) {
+            // 主要内容区域
+            Button(action: onTap) {
+                VStack(alignment: .leading, spacing: 12) {
+                    // 问题
+                    HStack {
+                        Image(systemName: "questionmark.circle.fill")
+                            .foregroundColor(.purple)
+                            .font(.title3)
+                        
+                        Text(record.question ?? "未知问题")
+                            .font(.headline)
+                            .fontWeight(.medium)
+                            .foregroundColor(.primary)
+                            .lineLimit(2)
+                        
+                        Spacer()
+                    }
                     
-                    Text(record.question ?? "未知问题")
-                        .font(.headline)
-                        .fontWeight(.medium)
-                        .foregroundColor(.primary)
-                        .lineLimit(2)
+                    // 卦象
+                    HStack {
+                        Image(systemName: "sparkles")
+                            .foregroundColor(.orange)
+                            .font(.caption)
+                        
+                        Text("卦象: \(record.hexagramDisplay)")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        
+                        Spacer()
+                        
+                        Text(record.formattedDate)
+                            .font(.caption2)
+                            .foregroundColor(.secondary)
+                    }
                     
-                    Spacer()
-                }
-                
-                // 卦象
-                HStack {
-                    Image(systemName: "sparkles")
-                        .foregroundColor(.orange)
-                        .font(.caption)
-                    
-                    Text("卦象: \(record.hexagramDisplay)")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    
-                    Spacer()
-                    
-                    Text(record.formattedDate)
-                        .font(.caption2)
-                        .foregroundColor(.secondary)
-                }
-                
-                // AI解读预览
-                if let interpretation = record.aiInterpretation, !interpretation.isEmpty {
-                    Text(interpretation)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                        .lineLimit(2)
-                        .padding(.top, 4)
+                    // AI解读预览
+                    if let interpretation = record.aiInterpretation, !interpretation.isEmpty {
+                        Text(interpretation)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .lineLimit(2)
+                            .padding(.top, 4)
+                    }
                 }
             }
-            .padding(16)
-            .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(Color.white)
-                    .shadow(color: .purple.opacity(0.1), radius: 8, x: 0, y: 4)
-            )
+            .buttonStyle(PlainButtonStyle())
+            
+            // 底部日期显示
+            HStack {
+                Spacer()
+                Text(record.formattedDate)
+                    .font(.caption2)
+                    .foregroundColor(.secondary)
+            }
+            .padding(.top, 8)
         }
-        .buttonStyle(PlainButtonStyle())
+        .padding(16)
+        .background(
+            RoundedRectangle(cornerRadius: 12)
+                .fill(Color.white)
+                .shadow(color: .purple.opacity(0.1), radius: 8, x: 0, y: 4)
+        )
+
     }
 }
 
@@ -299,7 +312,11 @@ struct HistoryDetailView: View {
                                 Spacer()
                             }
                             
-                            FormattedTextView(segments: formatAIText(interpretation))
+                            Text(interpretation)
+                                .font(.body)
+                                .foregroundColor(.primary)
+                                .lineLimit(nil)
+                                .fixedSize(horizontal: false, vertical: true)
                         }
                         .padding(20)
                         .background(
@@ -328,7 +345,11 @@ struct HistoryDetailView: View {
                                 Spacer()
                             }
                             
-                            FormattedTextView(segments: formatAIText(advice))
+                            Text(advice)
+                                .font(.body)
+                                .foregroundColor(.primary)
+                                .lineLimit(nil)
+                                .fixedSize(horizontal: false, vertical: true)
                         }
                         .padding(20)
                         .background(

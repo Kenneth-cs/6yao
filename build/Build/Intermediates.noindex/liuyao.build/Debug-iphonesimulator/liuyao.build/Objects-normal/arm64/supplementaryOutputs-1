@@ -1,0 +1,18 @@
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/AIService.swift":
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIService.swiftconstvalues"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIService.swiftdeps"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIService.dia"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIService.o"
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIService.d"
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/AIModels.swift":
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIModels.swiftdeps"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIModels.dia"
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIModels.swiftconstvalues"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIModels.o"
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AIModels.d"
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/AccuracyFeedbackView.swift":
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AccuracyFeedbackView.d"
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AccuracyFeedbackView.swiftconstvalues"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AccuracyFeedbackView.o"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AccuracyFeedbackView.swiftdeps"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/liuyao.build/Debug-iphonesimulator/liuyao.build/Objects-normal/arm64/AccuracyFeedbackView.dia"
