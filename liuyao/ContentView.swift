@@ -84,7 +84,7 @@ struct ContentView: View {
                 VStack(spacing: 30) {
                     // 顶部标题区域
                     VStack(spacing: 16) {
-                        Text("六爻智卦")
+                        Text("人生教练")
                             .font(.largeTitle)
                             .fontWeight(.bold)
                             .foregroundStyle(
@@ -130,7 +130,7 @@ struct ContentView: View {
                             currentTime = Date()
                         }
                         
-                        Text("提问，摇卦，推演")
+                        Text("看见自己、理解当下、顺势而为")
                             .font(.title3)
                             .foregroundColor(.secondary)
                             .fontWeight(.medium)
@@ -221,7 +221,7 @@ struct ContentView: View {
                                     }
                                 }
                                 
-                                Text("此刻 你想知道什么?")
+                                Text("遇事不决 摇一摇")
                                     .font(.title2)
                                     .fontWeight(.medium)
                                     .foregroundColor(.primary)
