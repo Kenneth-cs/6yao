@@ -1,0 +1,18 @@
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/LearningPageView.swift":
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/LearningPageView.swiftdeps"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/LearningPageView.o"
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/LearningPageView.d"
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/LearningPageView.swiftconstvalues"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/LearningPageView.dia"
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/HistoryPageView.swift":
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/HistoryPageView.d"
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/HistoryPageView.swiftconstvalues"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/HistoryPageView.o"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/HistoryPageView.swiftdeps"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/HistoryPageView.dia"
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/HistoryView.swift":
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/HistoryView.swiftconstvalues"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/HistoryView.dia"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/HistoryView.swiftdeps"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/HistoryView.o"
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/HistoryView.d"

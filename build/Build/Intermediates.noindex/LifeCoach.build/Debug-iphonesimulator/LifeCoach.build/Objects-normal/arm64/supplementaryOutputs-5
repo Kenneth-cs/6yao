@@ -1,0 +1,18 @@
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/liuyaoApp.swift":
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/liuyaoApp.swiftconstvalues"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/liuyaoApp.o"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/liuyaoApp.dia"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/liuyaoApp.swiftdeps"
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/liuyaoApp.d"
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/LocationManager.swift":
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/LocationManager.swiftconstvalues"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/LocationManager.dia"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/LocationManager.swiftdeps"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/LocationManager.o"
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/LocationManager.d"
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/LearningView.swift":
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/LearningView.swiftconstvalues"
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/LearningView.d"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/LearningView.swiftdeps"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/LearningView.o"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/LearningView.dia"

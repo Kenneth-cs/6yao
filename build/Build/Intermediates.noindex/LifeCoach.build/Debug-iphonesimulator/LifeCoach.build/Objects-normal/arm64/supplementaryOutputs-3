@@ -1,0 +1,18 @@
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/DivinationPageView.swift":
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/DivinationPageView.d"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/DivinationPageView.swiftdeps"
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/DivinationPageView.swiftconstvalues"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/DivinationPageView.dia"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/DivinationPageView.o"
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/DivinationResultPageView.swift":
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/DivinationResultPageView.swiftconstvalues"
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/DivinationResultPageView.d"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/DivinationResultPageView.dia"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/DivinationResultPageView.swiftdeps"
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/DivinationResultPageView.o"
+"/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/DataModels.swift":
+  object: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/DataModels.o"
+  const-values: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/DataModels.swiftconstvalues"
+  dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/DataModels.d"
+  swift-dependencies: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/DataModels.swiftdeps"
+  diagnostics: "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/build/Build/Intermediates.noindex/LifeCoach.build/Debug-iphonesimulator/LifeCoach.build/Objects-normal/arm64/DataModels.dia"

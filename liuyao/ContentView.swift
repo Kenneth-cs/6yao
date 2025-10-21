@@ -15,6 +15,14 @@ struct ContentView: View {
     
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
+    // iPad适配
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    
+    private var isIPad: Bool {
+        horizontalSizeClass == .regular && verticalSizeClass == .regular
+    }
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -81,11 +89,11 @@ struct ContentView: View {
                     .padding(.bottom, 100)
                 }
                 
-                VStack(spacing: 30) {
+                VStack(spacing: isIPad ? 40 : 30) {
                     // 顶部标题区域
-                    VStack(spacing: 16) {
+                    VStack(spacing: isIPad ? 24 : 16) {
                         Text("人生教练")
-                            .font(.largeTitle)
+                            .font(isIPad ? .system(size: 48, weight: .bold) : .largeTitle)
                             .fontWeight(.bold)
                             .foregroundStyle(
                                 LinearGradient(
@@ -176,20 +184,20 @@ struct ContentView: View {
                                                     endPoint: .bottomTrailing
                                                 )
                                             )
-                                            .frame(width: 80, height: 80)
+                                            .frame(width: isIPad ? 110 : 80, height: isIPad ? 110 : 80)
                                             .shadow(color: .orange.opacity(0.4), radius: 8, x: 2, y: 4)
                                         
-                                        // 内圈边框
+                                        // 内圆边框
                                         Circle()
                                             .stroke(Color.orange.opacity(0.8), lineWidth: 2)
-                                            .frame(width: 80, height: 80)
+                                            .frame(width: isIPad ? 110 : 80, height: isIPad ? 110 : 80)
                                         
                                         // 中央方孔
-                                        RoundedRectangle(cornerRadius: 4)
+                                        RoundedRectangle(cornerRadius: isIPad ? 6 : 4)
                                             .fill(Color.orange.opacity(0.9))
-                                            .frame(width: 24, height: 24)
+                                            .frame(width: isIPad ? 32 : 24, height: isIPad ? 32 : 24)
                                             .overlay(
-                                                RoundedRectangle(cornerRadius: 4)
+                                                RoundedRectangle(cornerRadius: isIPad ? 6 : 4)
                                                     .stroke(Color.yellow.opacity(0.6), lineWidth: 1)
                                             )
                                         
@@ -197,41 +205,41 @@ struct ContentView: View {
                                         VStack {
                                             HStack {
                                                 Text("乾")
-                                                    .font(.system(size: 8, weight: .bold))
+                                                    .font(.system(size: isIPad ? 12 : 8, weight: .bold))
                                                     .foregroundColor(.orange.opacity(0.8))
                                                 Spacer()
                                                 Text("坤")
-                                                    .font(.system(size: 8, weight: .bold))
+                                                    .font(.system(size: isIPad ? 12 : 8, weight: .bold))
                                                     .foregroundColor(.orange.opacity(0.8))
                                             }
-                                            .frame(width: 60)
+                                            .frame(width: isIPad ? 80 : 60)
                                             Spacer()
                                             HStack {
                                                 Text("坎")
-                                                    .font(.system(size: 8, weight: .bold))
+                                                    .font(.system(size: isIPad ? 12 : 8, weight: .bold))
                                                     .foregroundColor(.orange.opacity(0.8))
                                                 Spacer()
                                                 Text("离")
-                                                    .font(.system(size: 8, weight: .bold))
+                                                    .font(.system(size: isIPad ? 12 : 8, weight: .bold))
                                                     .foregroundColor(.orange.opacity(0.8))
                                             }
-                                            .frame(width: 60)
+                                            .frame(width: isIPad ? 80 : 60)
                                         }
-                                        .frame(width: 60, height: 60)
+                                        .frame(width: isIPad ? 80 : 60, height: isIPad ? 80 : 60)
                                     }
                                 }
                                 
                                 Text("遇事不决 摇一摇")
-                                    .font(.title2)
+                                    .font(isIPad ? .title : .title2)
                                     .fontWeight(.medium)
                                     .foregroundColor(.primary)
                                 
                                 Text("点击开始问卦")
-                                    .font(.caption)
+                                    .font(isIPad ? .body : .caption)
                                     .foregroundColor(.secondary)
                             }
-                            .padding(.vertical, 30)
-                            .padding(.horizontal, 40)
+                            .padding(.vertical, isIPad ? 40 : 30)
+                            .padding(.horizontal, isIPad ? 60 : 40)
                             .background(
                                 RoundedRectangle(cornerRadius: 20)
                                     .fill(Color.white)

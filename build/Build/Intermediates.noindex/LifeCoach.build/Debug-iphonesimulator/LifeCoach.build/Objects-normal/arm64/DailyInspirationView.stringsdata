@@ -1,0 +1,88 @@
+{
+  "source": "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/DailyInspirationView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "今日启示",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 248
+        }
+      },
+      {
+        "comment": "",
+        "key": "点击获取今日建议",
+        "location": {
+          "startingColumn": 66,
+          "startingLine": 47
+        }
+      },
+      {
+        "comment": "",
+        "key": "获取本周人生启示",
+        "location": {
+          "startingColumn": 95,
+          "startingLine": 47
+        }
+      },
+      {
+        "comment": "",
+        "key": "未卜先知，顺势而为",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 105
+        }
+      },
+      {
+        "comment": "",
+        "key": "点击获取启示",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "今日人生启示",
+        "location": {
+          "startingColumn": 74,
+          "startingLine": 158
+        }
+      },
+      {
+        "comment": "",
+        "key": "本周人生启示",
+        "location": {
+          "startingColumn": 97,
+          "startingLine": 158
+        }
+      },
+      {
+        "comment": "",
+        "key": "重新获取",
+        "location": {
+          "startingColumn": 44,
+          "startingLine": 203
+        }
+      },
+      {
+        "comment": "",
+        "key": "分享启示",
+        "location": {
+          "startingColumn": 44,
+          "startingLine": 222
+        }
+      },
+      {
+        "comment": "",
+        "key": "完成",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 252
+        }
+      }
+    ]
+  },
+  "version": 1
+}

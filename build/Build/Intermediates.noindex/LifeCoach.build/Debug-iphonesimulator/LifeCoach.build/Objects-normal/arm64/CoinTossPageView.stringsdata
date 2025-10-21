@@ -1,0 +1,152 @@
+{
+  "source": "/Users/zhangshaocong6/Desktop/cs/AI/liuyao/liuyao/CoinTossPageView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "摇卦",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 368
+        }
+      },
+      {
+        "comment": "",
+        "key": "正在为您解答",
+        "location": {
+          "startingColumn": 39,
+          "startingLine": 93
+        }
+      },
+      {
+        "comment": "",
+        "key": "准备开始占卜",
+        "location": {
+          "startingColumn": 62,
+          "startingLine": 93
+        }
+      },
+      {
+        "comment": "",
+        "key": "第 %lld 次抛掷",
+        "location": {
+          "startingColumn": 48,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "抛掷完成",
+        "location": {
+          "startingColumn": 95,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "乾",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 190
+        }
+      },
+      {
+        "comment": "",
+        "key": "坤",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 194
+        }
+      },
+      {
+        "comment": "",
+        "key": "坎",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 201
+        }
+      },
+      {
+        "comment": "",
+        "key": "离",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 205
+        }
+      },
+      {
+        "comment": "",
+        "key": "开始占卜",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 230
+        }
+      },
+      {
+        "comment": "",
+        "key": "将自动生成6次抛掷结果",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 259
+        }
+      },
+      {
+        "comment": "",
+        "key": "或摇动手机开始",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 254
+        }
+      },
+      {
+        "comment": "",
+        "key": "抛掷结果",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 269
+        }
+      },
+      {
+        "comment": "",
+        "key": "阳",
+        "location": {
+          "startingColumn": 59,
+          "startingLine": 275
+        }
+      },
+      {
+        "comment": "",
+        "key": "阴",
+        "location": {
+          "startingColumn": 67,
+          "startingLine": 275
+        }
+      },
+      {
+        "comment": "",
+        "key": "正在跳转...",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 339
+        }
+      },
+      {
+        "comment": "",
+        "key": "查看卦象解读",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 318
+        }
+      },
+      {
+        "comment": "",
+        "key": "取消",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 374
+        }
+      }
+    ]
+  },
+  "version": 1
+}

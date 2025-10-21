@@ -8,55 +8,76 @@ struct ProfilePageView: View {
     @State private var showingDataBackup = false
     @State private var showingPrivacySettings = false
     
+    // 添加iPad检测
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    
+    private var isIPad: Bool {
+        horizontalSizeClass == .regular && verticalSizeClass == .regular
+    }
+    
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(spacing: 24) {
-                    // 用户信息区域
-                    UserInfoSection()
-                    
-                    // 统计面板
-                    StatisticsPanel(statisticsService: statisticsService)
-                    
-                    // 个人设置
-                    PersonalSettingsSection()
-                    
-                    // 应用管理
-                    AppManagementSection(
-                        showingCacheCleanup: $showingCacheCleanup,
-                        showingDataBackup: $showingDataBackup,
-                        showingPrivacySettings: $showingPrivacySettings
-                    )
+        Group {
+            if isIPad {
+                // iPad: 直接显示内容，不使用NavigationView
+                profileContent
+            } else {
+                // iPhone: 使用NavigationView保持原有行为
+                NavigationView {
+                    profileContent
                 }
-                .padding(.horizontal, 20)
-                .padding(.top, 20)
-            }
-            .navigationTitle("个人中心")
-            .navigationBarTitleDisplayMode(.large)
-            .background(
-                LinearGradient(
-                    gradient: Gradient(colors: [
-                        Color.purple.opacity(0.05),
-                        Color.indigo.opacity(0.03),
-                        Color.white
-                    ]),
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-                .ignoresSafeArea()
-            )
-            .sheet(isPresented: $showingCacheCleanup) {
-                CacheCleanupView()
-            }
-            .sheet(isPresented: $showingDataBackup) {
-                DataBackupPlaceholderView()
-            }
-            .sheet(isPresented: $showingPrivacySettings) {
-                PrivacySettingsView()
             }
         }
         .onAppear {
             statisticsService.loadStatistics(context: viewContext)
+        }
+    }
+    
+    // 提取公共的内容视图
+    private var profileContent: some View {
+        ScrollView {
+            VStack(spacing: 24) {
+                // 用户信息区域
+                UserInfoSection()
+                
+                // 统计面板
+                StatisticsPanel(statisticsService: statisticsService)
+                
+                // 个人设置
+                PersonalSettingsSection()
+                
+                // 应用管理
+                AppManagementSection(
+                    showingCacheCleanup: $showingCacheCleanup,
+                    showingDataBackup: $showingDataBackup,
+                    showingPrivacySettings: $showingPrivacySettings
+                )
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 20)
+        }
+        .navigationTitle("个人中心")
+        .navigationBarTitleDisplayMode(isIPad ? .inline : .large)
+        .background(
+            LinearGradient(
+                gradient: Gradient(colors: [
+                    Color.purple.opacity(0.05),
+                    Color.indigo.opacity(0.03),
+                    Color.white
+                ]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+        )
+        .sheet(isPresented: $showingCacheCleanup) {
+            CacheCleanupView()
+        }
+        .sheet(isPresented: $showingDataBackup) {
+            DataBackupPlaceholderView()
+        }
+        .sheet(isPresented: $showingPrivacySettings) {
+            PrivacySettingsView()
         }
     }
 }

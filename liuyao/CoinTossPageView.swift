@@ -17,6 +17,14 @@ struct CoinTossPageView: View {
     @State private var hexagramInfo: (name: String, description: String)? = nil
     @State private var showResultPage = false
     
+    // iPad适配
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    
+    private var isIPad: Bool {
+        horizontalSizeClass == .regular && verticalSizeClass == .regular
+    }
+    
     var body: some View {
         ZStack {
             // 背景渐变
@@ -139,7 +147,7 @@ struct CoinTossPageView: View {
                                 ),
                                 lineWidth: 4
                             )
-                            .frame(width: 120, height: 120)
+                            .frame(width: isIPad ? 160 : 120, height: isIPad ? 160 : 120)
                             .opacity(isAnimating ? 1.0 : 0.3)
                             .scaleEffect(isAnimating ? 1.1 : 1.0)
                             .animation(.easeInOut(duration: 0.8).repeatForever(autoreverses: true), value: isAnimating)
@@ -159,20 +167,20 @@ struct CoinTossPageView: View {
                                         endPoint: .bottomTrailing
                                     )
                                 )
-                                .frame(width: 80, height: 80)
+                                .frame(width: isIPad ? 110 : 80, height: isIPad ? 110 : 80)
                                 .shadow(color: .orange.opacity(0.4), radius: 8, x: 2, y: 4)
                             
                             // 内圈边框
                             Circle()
                                 .stroke(Color.orange.opacity(0.8), lineWidth: 2)
-                                .frame(width: 80, height: 80)
+                                .frame(width: isIPad ? 110 : 80, height: isIPad ? 110 : 80)
                             
                             // 中央方孔
-                            RoundedRectangle(cornerRadius: 4)
+                            RoundedRectangle(cornerRadius: isIPad ? 6 : 4)
                                 .fill(Color.orange.opacity(0.9))
-                                .frame(width: 24, height: 24)
+                                .frame(width: isIPad ? 32 : 24, height: isIPad ? 32 : 24)
                                 .overlay(
-                                    RoundedRectangle(cornerRadius: 4)
+                                    RoundedRectangle(cornerRadius: isIPad ? 6 : 4)
                                         .stroke(Color.yellow.opacity(0.6), lineWidth: 1)
                                 )
                             
@@ -180,27 +188,27 @@ struct CoinTossPageView: View {
                             VStack {
                                 HStack {
                                     Text("乾")
-                                        .font(.system(size: 8, weight: .bold))
+                                        .font(.system(size: isIPad ? 12 : 8, weight: .bold))
                                         .foregroundColor(.orange.opacity(0.8))
                                     Spacer()
                                     Text("坤")
-                                        .font(.system(size: 8, weight: .bold))
+                                        .font(.system(size: isIPad ? 12 : 8, weight: .bold))
                                         .foregroundColor(.orange.opacity(0.8))
                                 }
-                                .frame(width: 60)
+                                .frame(width: isIPad ? 80 : 60)
                                 Spacer()
                                 HStack {
                                     Text("坎")
-                                        .font(.system(size: 8, weight: .bold))
+                                        .font(.system(size: isIPad ? 12 : 8, weight: .bold))
                                         .foregroundColor(.orange.opacity(0.8))
                                     Spacer()
                                     Text("离")
-                                        .font(.system(size: 8, weight: .bold))
+                                        .font(.system(size: isIPad ? 12 : 8, weight: .bold))
                                         .foregroundColor(.orange.opacity(0.8))
                                 }
-                                .frame(width: 60)
+                                .frame(width: isIPad ? 80 : 60)
                             }
-                            .frame(width: 60, height: 60)
+                            .frame(width: isIPad ? 80 : 60, height: isIPad ? 80 : 60)
                         }
                         .scaleEffect(coinScale)
                         .rotationEffect(.degrees(rotationAngle))
